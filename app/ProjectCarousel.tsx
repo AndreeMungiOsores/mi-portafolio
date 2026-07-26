@@ -55,11 +55,8 @@ export function ProjectCarousel({
 
   return (
     <figure className="project-visual carousel-visual red" aria-label={`Galería de ${title}`}>
-      <div className="window-bar">
-        <span />
-        <span />
-        <span />
-        <small>medicaltech · panel de campo</small>
+      <div className="carousel-topline">
+        <span>medicaltech · panel de campo</span>
         <div className="carousel-count" aria-live="polite">
           {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
         </div>

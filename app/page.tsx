@@ -125,6 +125,15 @@ const projects = [
   },
 ] as const;
 
+const orderedProjects = [
+  projects[2],
+  projects[1],
+  projects[0],
+  projects[3],
+  projects[4],
+  projects[5],
+] as const;
+
 function ProjectVisual({
   project,
 }: {
@@ -136,13 +145,7 @@ function ProjectVisual({
 
   if ("image" in project) {
     return (
-      <figure className={`project-visual ${project.tone}`}>
-        <div className="window-bar">
-          <span />
-          <span />
-          <span />
-          <small>{project.title.toLowerCase().replaceAll(" ", "-")}.app</small>
-        </div>
+      <figure className={`project-visual clean-visual ${project.tone}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={project.image} alt={project.imageAlt} />
       </figure>
@@ -256,14 +259,17 @@ export default function Home() {
         </div>
 
         <div className="project-list">
-          {projects.map((project) => (
+          {orderedProjects.map((project, index) => {
+            const displayNumber = String(index + 1).padStart(2, "0");
+
+            return (
             <article
               className={`project-card tone-${project.tone}`}
-              id={`proyecto-${project.number}`}
+              id={`proyecto-${displayNumber}`}
               key={project.title}
             >
               <div className="project-heading">
-                <span className="project-number">{project.number}</span>
+                <span className="project-number">{displayNumber}</span>
                 <div>
                   <p className="project-eyebrow">{project.eyebrow}</p>
                   <h3>{project.title}</h3>
@@ -271,30 +277,20 @@ export default function Home() {
                 </div>
               </div>
               <ProjectVisual project={project} />
-              <div className="case-grid">
-                <div>
-                  <span>EL RETO</span>
-                  <p>{project.challenge}</p>
-                </div>
-                <div>
-                  <span>LA SOLUCIÓN</span>
-                  <p>{project.solution}</p>
-                </div>
-                <div>
-                  <span>EL VALOR</span>
-                  <p>{project.impact}</p>
-                </div>
-              </div>
               <div className="project-footer">
-                <div className="tags">
-                  {project.stack.map((tech) => <span key={tech}>{tech}</span>)}
-                </div>
-                <div className="deliverables">
-                  {project.deliverables.map((item) => <span key={item}>✓ {item}</span>)}
+                <p className="project-impact">{project.impact}</p>
+                <div className="project-meta">
+                  <div className="tags">
+                    {project.stack.slice(0, 4).map((tech) => <span key={tech}>{tech}</span>)}
+                  </div>
+                  <div className="deliverables">
+                    {project.deliverables.map((item) => <span key={item}>✓ {item}</span>)}
+                  </div>
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
