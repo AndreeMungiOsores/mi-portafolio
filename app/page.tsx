@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProjectCarousel } from "./ProjectCarousel";
 
 export const metadata: Metadata = {
   title: "Andree — Portafolio de software",
@@ -9,6 +10,38 @@ export const metadata: Metadata = {
 const projects = [
   {
     number: "01",
+    title: "Medical Tech Field",
+    eyebrow: "Field operations · Monitoreo en vivo",
+    lead: "Un panel de control para asignar rutas diarias y seguir la operación de vendedores en tiempo real.",
+    tone: "red",
+    challenge:
+      "Coordinar la agenda de ejecutivos de campo y conocer, durante la jornada, qué puntos de venta fueron visitados, cuáles siguen pendientes y dónde se encuentra cada vendedor.",
+    solution:
+      "Diseñé un panel administrativo que permite asignar clínicas y puntos de venta por fecha, visualizar la ruta recorrida sobre el mapa y monitorear geolocalización, movimiento y estado de cada visita.",
+    impact:
+      "Medical Tech obtiene trazabilidad diaria de su equipo comercial, puede reaccionar ante desvíos y mantiene una lectura clara del avance de cada ruta.",
+    stack: ["Monitoreo en vivo", "Geolocalización", "Rutas diarias", "Estados PDV", "Usuarios", "Control de acceso"],
+    deliverables: ["Mapa en vivo", "Asignación de rutas", "Seguimiento por vendedor"],
+    carousel: [
+      {
+        src: "/projects/medicaltech-live-monitoring.png",
+        alt: "Panel Medical Tech con la ruta y geolocalización en vivo de una ejecutiva",
+        label: "Monitoreo en vivo",
+      },
+      {
+        src: "/projects/medicaltech-route-assignment.png",
+        alt: "Panel Medical Tech para asignar puntos de venta a la ruta diaria de una ejecutiva",
+        label: "Asignación de rutas",
+      },
+      {
+        src: "/projects/medicaltech-login.png",
+        alt: "Pantalla de acceso seguro al panel Medical Tech",
+        label: "Acceso seguro",
+      },
+    ],
+  },
+  {
+    number: "02",
     title: "BlissMap",
     eyebrow: "SaaS · Geolocalización",
     lead: "Un localizador de tiendas personalizable que cualquier marca puede integrar en minutos.",
@@ -25,7 +58,7 @@ const projects = [
     deliverables: ["Panel de gestión", "Mapa público", "Widget embebible"],
   },
   {
-    number: "02",
+    number: "03",
     title: "CRM WhatsApp",
     eyebrow: "Automatización · CRM médico",
     lead: "Conversaciones de campo convertidas en información ordenada, consultable y segura.",
@@ -41,7 +74,7 @@ const projects = [
     mockup: "crm",
   },
   {
-    number: "03",
+    number: "04",
     title: "clickenla.bio",
     eyebrow: "Producto digital · Creator economy",
     lead: "Una alternativa peruana a Linktree con identidad propia, analítica y control total del perfil.",
@@ -58,7 +91,7 @@ const projects = [
     deliverables: ["Perfil público", "Editor visual", "Analítica"],
   },
   {
-    number: "04",
+    number: "05",
     title: "QR Router",
     eyebrow: "Herramienta · Growth operations",
     lead: "QR estáticos y dinámicos cuyo destino puede cambiar sin volver a imprimir.",
@@ -75,7 +108,7 @@ const projects = [
     deliverables: ["QR dinámico", "Historial", "Analítica de visitas"],
   },
   {
-    number: "05",
+    number: "06",
     title: "Rindegastos",
     eyebrow: "Fintech interna · Operaciones",
     lead: "Un centro de control para revisar, aprobar, exportar y desembolsar gastos empresariales.",
@@ -97,6 +130,10 @@ function ProjectVisual({
 }: {
   project: (typeof projects)[number];
 }) {
+  if ("carousel" in project) {
+    return <ProjectCarousel images={project.carousel} title={project.title} />;
+  }
+
   if ("image" in project) {
     return (
       <figure className={`project-visual ${project.tone}`}>
@@ -211,7 +248,7 @@ export default function Home() {
       <section className="projects shell" id="proyectos">
         <div className="section-intro">
           <span className="section-index">01 / TRABAJO SELECCIONADO</span>
-          <h2>Cinco proyectos.<br />Cinco problemas reales resueltos.</h2>
+          <h2>Seis proyectos.<br />Seis problemas reales resueltos.</h2>
           <p>
             Cada caso combina criterio de producto, interfaz, arquitectura y ejecución.
             El foco no está en mostrar código: está en explicar la decisión y el valor creado.
@@ -220,7 +257,11 @@ export default function Home() {
 
         <div className="project-list">
           {projects.map((project) => (
-            <article className={`project-card tone-${project.tone}`} key={project.title}>
+            <article
+              className={`project-card tone-${project.tone}`}
+              id={`proyecto-${project.number}`}
+              key={project.title}
+            >
               <div className="project-heading">
                 <span className="project-number">{project.number}</span>
                 <div>
