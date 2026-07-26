@@ -13,7 +13,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andree-software-portfolio.sites.openai.com"),
+  metadataBase: new URL("https://andree-software-portfolio.blisscorp-3376.chatgpt.site"),
   title: {
     default: "Andree — Portafolio de software",
     template: "%s · Andree",
