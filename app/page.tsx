@@ -247,64 +247,7 @@ function ProjectVisual({
     );
   }
 
-  if (project.mockup === "crm") {
-    return (
-      <div className="project-visual mockup crm-mockup">
-        <div className="mock-sidebar">
-          <strong>WA·CRM</strong>
-          <span className="active">Conversaciones</span>
-          <span>Contactos</span>
-          <span>Sincronización</span>
-        </div>
-        <div className="mock-content">
-          <div className="mock-top">
-            <div><small>CRM DE CAMPO</small><strong>Conversaciones</strong></div>
-            <b>● Solo lectura</b>
-          </div>
-          <div className="chat-grid">
-            <div className="contact-list">
-              {["Dra. Valeria M.", "Dr. Carlos R.", "Dra. Ana P."].map((name, index) => (
-                <div className={index === 0 ? "selected" : ""} key={name}>
-                  <i>{name.charAt(0)}</i><span><strong>{name}</strong><small>Conversación sincronizada</small></span>
-                </div>
-              ))}
-            </div>
-            <div className="chat-thread">
-              <span className="bubble">Buenos días, comparto la información solicitada.</span>
-              <span className="bubble reply">Recibido. Lo revisamos en la reunión.</span>
-              <span className="sync-label">Actualizado hace 2 min.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="project-visual mockup expenses-mockup">
-      <div className="expense-head">
-        <div><small>OPERACIONES FINANCIERAS</small><strong>Rindegastos</strong></div>
-        <span>Exportar reporte ↗</span>
-      </div>
-      <div className="metric-row">
-        <div><small>PENDIENTES</small><b>18</b><em>por revisar</em></div>
-        <div><small>APROBADOS</small><b>S/ 24,680</b><em>este mes</em></div>
-        <div><small>DESEMBOLSOS</small><b>12</b><em>procesados</em></div>
-      </div>
-      <div className="expense-table">
-        <div className="table-tools"><span>Buscar comprobante…</span><span>Julio 2026⌄</span></div>
-        {[
-          ["Blisscorp", "Movilidad comercial", "S/ 148.00", "Aprobado"],
-          ["Skinbliss", "Materiales", "S/ 326.40", "Pendiente"],
-          ["Blissfarma", "Alimentación", "S/ 89.90", "Aprobado"],
-        ].map((row) => (
-          <div className="expense-row" key={row[1]}>
-            {row.map((cell, index) => <span key={cell} className={index === 3 ? cell.toLowerCase() : ""}>{cell}</span>)}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return null;
 }
 
 export default function Home() {
