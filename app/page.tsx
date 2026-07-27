@@ -127,6 +127,23 @@ const projects = [
     title: "Rindegastos",
     eyebrow: "Fintech interna · Operaciones",
     lead: "Un centro de control para revisar, aprobar, exportar y desembolsar gastos empresariales.",
+    carousel: [
+      {
+        src: "/projects/rindegastos-panel.png",
+        alt: "Panel general de Rindegastos con indicadores, filtros y listado de comprobantes",
+        label: "Panel de gastos",
+      },
+      {
+        src: "/projects/rindegastos-detail.png",
+        alt: "Detalle de un gasto en Rindegastos con información del vendedor y fotografía del comprobante",
+        label: "Revisión de comprobantes",
+      },
+      {
+        src: "/projects/rindegastos-disbursement.png",
+        alt: "Flujo de Rindegastos para adjuntar el comprobante y confirmar un desembolso",
+        label: "Generación de desembolso",
+      },
+    ],
     tone: "orange",
     challenge:
       "Reunir comprobantes, datos de vendedores, estados de aprobación y desembolsos que vivían dispersos en procesos manuales.",
@@ -136,7 +153,6 @@ const projects = [
       "Reduce trabajo operativo, mejora la trazabilidad y concentra decisiones financieras en una interfaz auditable.",
     stack: ["Next.js 14", "React 18", "Dataverse", "Microsoft Graph", "ExcelJS", "JSZip"],
     deliverables: ["Control de gastos", "Exportaciones", "Módulo de préstamos"],
-    mockup: "expenses",
   },
   {
     number: "07",
