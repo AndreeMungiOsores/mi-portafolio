@@ -78,8 +78,23 @@ const projects = [
     title: "clickenla.bio",
     eyebrow: "Producto digital · Creator economy",
     lead: "Una alternativa peruana a Linktree con identidad propia, analítica y control total del perfil.",
-    image: "/projects/clickenlabio.png",
-    imageAlt: "Captura de clickenla.bio",
+    carousel: [
+      {
+        src: "/projects/clickenlabio-landing.png",
+        alt: "Landing comercial de clickenla.bio con propuesta de valor y vista móvil",
+        label: "Landing comercial",
+      },
+      {
+        src: "/projects/clickenlabio-editor.png",
+        alt: "Editor de enlaces de clickenla.bio con vista previa móvil en tiempo real",
+        label: "Editor y vista previa",
+      },
+      {
+        src: "/projects/clickenlabio-profile.png",
+        alt: "Perfil público creado en clickenla.bio con enlaces e integración de Instagram",
+        label: "Perfil público",
+      },
+    ],
     tone: "coral",
     challenge:
       "Dar a creadores y negocios una página rápida, personalizable y fácil de administrar desde una sola pantalla.",
