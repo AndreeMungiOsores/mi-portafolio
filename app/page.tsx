@@ -123,12 +123,60 @@ const projects = [
     deliverables: ["Control de gastos", "Exportaciones", "Módulo de préstamos"],
     mockup: "expenses",
   },
+  {
+    number: "07",
+    title: "Medical Tech CRM",
+    eyebrow: "CRM empresarial · Inteligencia de campo",
+    lead: "Una base médica geolocalizada con historial comercial y trazabilidad por ejecutivo.",
+    tone: "red",
+    challenge:
+      "Centralizar la base de médicos y clínicas, relacionarla con el territorio y conservar el historial de cada interacción del equipo comercial.",
+    solution:
+      "Desarrollé un CRM con perfiles de clientes, geolocalización masiva, historial de visitas y compras, segmentación y analítica del desempeño de campo.",
+    impact:
+      "Centraliza médicos y clínicas en un mapa operativo y conecta cada perfil con visitas, compras y desempeño del equipo de campo.",
+    stack: ["Supabase", "Geolocalización", "Historial de visitas", "Analítica", "Segmentación", "Dashboard"],
+    deliverables: ["CRM médico", "Mapa de PDV", "Trazabilidad comercial"],
+    carousel: [
+      {
+        src: "/projects/medicaltech-crm-menu.png",
+        alt: "Menú principal del CRM de Medical Tech",
+        label: "Centro de operaciones",
+      },
+      {
+        src: "/projects/medicaltech-crm-clients.png",
+        alt: "Base de médicos y clínicas del CRM de Medical Tech",
+        label: "Base médica",
+      },
+      {
+        src: "/projects/medicaltech-crm-visits.png",
+        alt: "Historial de visitas de un médico en Medical Tech CRM",
+        label: "Historial de visitas",
+      },
+      {
+        src: "/projects/medicaltech-crm-purchases.png",
+        alt: "Historial de compras de un médico en Medical Tech CRM",
+        label: "Historial de compras",
+      },
+      {
+        src: "/projects/medicaltech-crm-map.png",
+        alt: "Mapa geolocalizado de médicos y clínicas en Medical Tech CRM",
+        label: "Mapa de PDV",
+      },
+      {
+        src: "/projects/medicaltech-crm-analytics.png",
+        alt: "Dashboard de estadísticas generales de Medical Tech CRM",
+        label: "Analítica de campo",
+      },
+    ],
+  },
 ] as const;
 
 const orderedProjects = [
   projects[2],
   projects[1],
   projects[0],
+  projects[6],
   projects[3],
   projects[4],
   projects[5],
@@ -251,7 +299,7 @@ export default function Home() {
       <section className="projects shell" id="proyectos">
         <div className="section-intro">
           <span className="section-index">01 / TRABAJO SELECCIONADO</span>
-          <h2>Seis proyectos.<br />Seis problemas reales resueltos.</h2>
+          <h2>Siete proyectos.<br />Siete problemas reales resueltos.</h2>
           <p>
             Cada caso combina criterio de producto, interfaz, arquitectura y ejecución.
             El foco no está en mostrar código: está en explicar la decisión y el valor creado.
