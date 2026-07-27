@@ -77,6 +77,8 @@ const projects = [
     title: "CRM WhatsApp",
     eyebrow: "Automatización · CRM médico",
     lead: "Conversaciones de campo convertidas en información ordenada, consultable y segura.",
+    image: "/projects/whatsapp-crm-multi-vendor.png",
+    imageAlt: "CRM de múltiples números de WhatsApp con selección por vendedor, conversaciones y chat en modo solo lectura",
     tone: "lime",
     challenge:
       "Centralizar conversaciones entre ejecutivos y médicos sin alterar WhatsApp ni introducir funciones de envío que comprometieran la seguridad.",
@@ -86,7 +88,6 @@ const projects = [
       "Unifica el historial comercial y permite revisar contactos, mensajes, archivos y estado de sincronización desde un único lugar.",
     stack: ["Node.js", "WhatsApp Web", "SQLite", "Python", "Streamlit", "Pandas"],
     deliverables: ["Captura pasiva", "ETL programado", "Dashboard seguro"],
-    mockup: "crm",
   },
   {
     number: "04",
