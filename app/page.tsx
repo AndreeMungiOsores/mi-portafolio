@@ -393,25 +393,32 @@ export default function Home() {
 
       <section className="about shell" id="sobre-mi">
         <div className="about-visual">
-          <img
-            src="/andree-with-cat.png"
-            alt="Andree Mungi trabajando con una laptop junto a su gato"
-          />
-          <span>INGENIERÍA + PRODUCTO + CURIOSIDAD</span>
+          <div className="portrait-bubble">
+            <img src="/andree-profile.png" alt="Retrato de Andree Mungi" />
+          </div>
+          <div className="cat-bubble">
+            <img src="/andree-cat.png" alt="El gato de Andree" />
+          </div>
+          <div className="about-orbit" aria-hidden="true" />
+          <span className="about-visual-label">INGENIERÍA + PRODUCTO</span>
+          <span className="cat-label">MI COMPAÑERO DE IDEAS</span>
         </div>
         <div className="about-content">
           <span className="section-index">02 / SOBRE MÍ</span>
-          <p className="about-kicker">Hola, soy Andree Mungi — ingeniero y constructor de productos digitales.</p>
-          <h2>Convierto retos técnicos en oportunidades de crecimiento.</h2>
+          <p className="about-kicker">Hola, soy Andree Mungi.</p>
+          <h2>
+            Te ayudo a dar el <strong>salto</strong> a la{" "}
+            <strong>digitalización</strong> de tu empresa.
+          </h2>
           <p className="about-copy">
-            Soy egresado de Ingeniería Mecatrónica de UTEC y llevo más de dos años
-            desarrollando soluciones de software. Me mueve ayudar a empresas que todavía
-            no han dado el salto digital a transformar sus procesos, competir mejor y
-            abrir nuevas oportunidades con tecnología hecha a su medida.
+            Soy egresado de <strong>Ingeniería Mecatrónica de UTEC</strong> y llevo{" "}
+            <strong>más de dos años</strong> desarrollando soluciones de software.
+            Ayudo a empresas a transformar sus procesos, competir mejor y abrir nuevas
+            oportunidades con <strong>tecnología hecha a su medida</strong>.
           </p>
           <p className="about-personal">
-            Trabajo desde Perú, disfruto unir software y hardware y, cuando cierro la
-            laptop, probablemente estoy pasando tiempo con mi gato.
+            Trabajo desde <strong>Perú</strong>, disfruto unir software y hardware y,
+            cuando cierro la laptop, probablemente estoy pasando tiempo con mi gato.
           </p>
           <div className="about-facts" aria-label="Datos sobre Andree">
             <span>UTEC · Ing. Mecatrónica</span>
