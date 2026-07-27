@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const projects = [
   {
     number: "01",
-    title: "Medical Tech Field",
+    title: "Medicaltech Field",
     eyebrow: "Field operations · Monitoreo en vivo",
     lead: "Un panel de control para asignar rutas diarias y seguir la operación de vendedores en tiempo real.",
     tone: "red",
@@ -19,23 +19,23 @@ const projects = [
     solution:
       "Diseñé un panel administrativo que permite asignar clínicas y puntos de venta por fecha, visualizar la ruta recorrida sobre el mapa y monitorear geolocalización, movimiento y estado de cada visita.",
     impact:
-      "Medical Tech obtiene trazabilidad diaria de su equipo comercial, puede reaccionar ante desvíos y mantiene una lectura clara del avance de cada ruta.",
+      "Medicaltech obtiene trazabilidad diaria de su equipo comercial, puede reaccionar ante desvíos y mantiene una lectura clara del avance de cada ruta.",
     stack: ["Monitoreo en vivo", "Geolocalización", "Rutas diarias", "Estados PDV", "Usuarios", "Control de acceso"],
     deliverables: ["Mapa en vivo", "Asignación de rutas", "Seguimiento por vendedor"],
     carousel: [
       {
         src: "/projects/medicaltech-live-monitoring.png",
-        alt: "Panel Medical Tech con la ruta y geolocalización en vivo de una ejecutiva",
+        alt: "Panel Medicaltech con la ruta y geolocalización en vivo de una ejecutiva",
         label: "Monitoreo en vivo",
       },
       {
         src: "/projects/medicaltech-route-assignment.png",
-        alt: "Panel Medical Tech para asignar puntos de venta a la ruta diaria de una ejecutiva",
+        alt: "Panel Medicaltech para asignar puntos de venta a la ruta diaria de una ejecutiva",
         label: "Asignación de rutas",
       },
       {
         src: "/projects/medicaltech-login.png",
-        alt: "Pantalla de acceso seguro al panel Medical Tech",
+        alt: "Pantalla de acceso seguro al panel Medicaltech",
         label: "Acceso seguro",
       },
     ],
@@ -45,8 +45,23 @@ const projects = [
     title: "BlissMap",
     eyebrow: "SaaS · Geolocalización",
     lead: "Un localizador de tiendas personalizable que cualquier marca puede integrar en minutos.",
-    image: "/projects/blissmap.png",
-    imageAlt: "Captura de la plataforma BlissMap",
+    carousel: [
+      {
+        src: "/projects/blissmap-locations.png",
+        alt: "Panel de BlissMap con el listado y estado de las ubicaciones publicadas",
+        label: "Gestión de ubicaciones",
+      },
+      {
+        src: "/projects/blissmap-location-editor.png",
+        alt: "Editor de BlissMap con datos del punto y posicionamiento preciso sobre el mapa",
+        label: "Editor geolocalizado",
+      },
+      {
+        src: "/projects/blissmap-public-map.png",
+        alt: "Localizador público de BlissMap con resultados, datos de contacto y mapa de cobertura",
+        label: "Mapa público",
+      },
+    ],
     tone: "violet",
     challenge:
       "Convertir una necesidad técnica —mostrar y administrar múltiples puntos de venta— en una experiencia simple para equipos sin conocimientos de programación.",
@@ -156,7 +171,7 @@ const projects = [
   },
   {
     number: "07",
-    title: "Medical Tech CRM",
+    title: "Medicaltech CRM",
     eyebrow: "CRM empresarial · Inteligencia de campo",
     lead: "Una base médica geolocalizada con historial comercial y trazabilidad por ejecutivo.",
     tone: "red",
@@ -171,32 +186,32 @@ const projects = [
     carousel: [
       {
         src: "/projects/medicaltech-crm-menu.png",
-        alt: "Menú principal del CRM de Medical Tech",
+        alt: "Menú principal del CRM de Medicaltech",
         label: "Centro de operaciones",
       },
       {
         src: "/projects/medicaltech-crm-clients.png",
-        alt: "Base de médicos y clínicas del CRM de Medical Tech",
+        alt: "Base de médicos y clínicas del CRM de Medicaltech",
         label: "Base médica",
       },
       {
         src: "/projects/medicaltech-crm-visits.png",
-        alt: "Historial de visitas de un médico en Medical Tech CRM",
+        alt: "Historial de visitas de un médico en Medicaltech CRM",
         label: "Historial de visitas",
       },
       {
         src: "/projects/medicaltech-crm-purchases.png",
-        alt: "Historial de compras de un médico en Medical Tech CRM",
+        alt: "Historial de compras de un médico en Medicaltech CRM",
         label: "Historial de compras",
       },
       {
         src: "/projects/medicaltech-crm-map.png",
-        alt: "Mapa geolocalizado de médicos y clínicas en Medical Tech CRM",
+        alt: "Mapa geolocalizado de médicos y clínicas en Medicaltech CRM",
         label: "Mapa de PDV",
       },
       {
         src: "/projects/medicaltech-crm-analytics.png",
-        alt: "Dashboard de estadísticas generales de Medical Tech CRM",
+        alt: "Dashboard de estadísticas generales de Medicaltech CRM",
         label: "Analítica de campo",
       },
     ],
@@ -204,10 +219,10 @@ const projects = [
 ] as const;
 
 const orderedProjects = [
-  projects[2],
-  projects[1],
   projects[0],
   projects[6],
+  projects[1],
+  projects[2],
   projects[3],
   projects[4],
   projects[5],
