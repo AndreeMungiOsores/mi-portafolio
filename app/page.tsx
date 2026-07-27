@@ -111,7 +111,7 @@ const projects = [
     eyebrow: "Herramienta · Growth operations",
     lead: "QR estáticos y dinámicos cuyo destino puede cambiar sin volver a imprimir.",
     image: "/projects/qr-router.png",
-    imageAlt: "Captura del creador de QR Router",
+    imageAlt: "Administrador de QR Router con creador, biblioteca, analítica y vista previa del código QR",
     tone: "cyan",
     challenge:
       "Evitar que una campaña impresa quede obsoleta cuando cambia la URL de destino y, además, medir su uso.",
