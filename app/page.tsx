@@ -465,6 +465,20 @@ export default function Home() {
         <div className="shell footer-inner">
           <p>¿Tienes un proceso que debería funcionar mejor?</p>
           <h2>Construyamos<br />la solución.</h2>
+          <a
+            className="whatsapp-button"
+            href="https://wa.me/51961556197"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Mandar un mensaje a Andree por WhatsApp"
+          >
+            <span className="whatsapp-icon" aria-hidden="true">☎</span>
+            <span>
+              <small>HABLEMOS POR WHATSAPP</small>
+              Mandar mensaje
+            </span>
+            <b aria-hidden="true">↗</b>
+          </a>
           <div className="footer-row">
             <span>Disponible para proyectos de producto, automatización y software a medida.</span>
             <a href="#inicio">Volver arriba ↑</a>
