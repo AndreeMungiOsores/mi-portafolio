@@ -838,17 +838,21 @@ a {
 }
 
 .about {
+  height: calc(100svh - 86px);
+  min-height: 680px;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(380px, .92fr);
   align-items: center;
   gap: clamp(48px, 7vw, 100px);
+  padding: 28px 0;
+  overflow: hidden;
   border-top: 1px solid var(--line);
 }
 
 .about-visual {
   position: relative;
-  min-height: 580px;
-  height: min(68vh, 720px);
+  min-height: 500px;
+  height: min(62vh, 620px);
   overflow: hidden;
   border-radius: 24px;
   border: 1px solid var(--line);
@@ -1186,10 +1190,12 @@ a {
   }
 
   .about {
+    height: auto;
     min-height: auto;
     grid-template-columns: 1fr;
     gap: 48px;
     padding: 90px 0;
+    overflow: visible;
   }
 
   .about-visual {

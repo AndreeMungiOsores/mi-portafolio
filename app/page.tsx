@@ -316,15 +316,14 @@ export default function Home() {
           <span>Portafolio de Andree Mungi</span>
         </a>
         <div className="nav-links">
-          <a href="#proyectos">Proyectos</a>
           <a href="#sobre-mi">Sobre mí</a>
+          <a href="#proyectos">Proyectos</a>
           <a href="#enfoque">Enfoque</a>
           <a className="nav-cta" href="#contacto">Conversemos ↗</a>
         </div>
       </nav>
 
       <header className="hero shell" id="inicio">
-        <div className="hero-kicker"><span /> Disponible para nuevos proyectos · 2026</div>
         <h1>
           Software que convierte
           <span> procesos complejos </span>
@@ -345,9 +344,46 @@ export default function Home() {
         </div>
       </header>
 
+      <section className="about shell" id="sobre-mi">
+        <div className="about-visual">
+          <div className="portrait-bubble">
+            <img src="/andree-profile.png" alt="Retrato de Andree Mungi" />
+          </div>
+          <div className="cat-bubble">
+            <img src="/andree-cat.png" alt="El gato de Andree" />
+          </div>
+          <div className="about-orbit" aria-hidden="true" />
+          <span className="about-visual-label">INGENIERÍA + PRODUCTO</span>
+          <span className="cat-label">MI COMPAÑERO DE IDEAS</span>
+        </div>
+        <div className="about-content">
+          <span className="section-index">01 / SOBRE MÍ</span>
+          <p className="about-kicker">Hola, soy Andree Mungi.</p>
+          <h2>
+            Te ayudo a dar el <strong>salto</strong> a la{" "}
+            <strong>digitalización</strong> de tu empresa.
+          </h2>
+          <p className="about-copy">
+            Soy egresado de <strong>Ingeniería Mecatrónica de UTEC</strong> y llevo{" "}
+            <strong>más de dos años</strong> desarrollando soluciones de software.
+            Ayudo a empresas a transformar sus procesos, competir mejor y abrir nuevas
+            oportunidades con <strong>tecnología hecha a su medida</strong>.
+          </p>
+          <p className="about-personal">
+            Trabajo desde <strong>Perú</strong>, disfruto unir software y hardware y,
+            cuando cierro la laptop, probablemente estoy pasando tiempo con mi gato.
+          </p>
+          <div className="about-facts" aria-label="Datos sobre Andree">
+            <span>UTEC · Ing. Mecatrónica</span>
+            <span>2+ años en software</span>
+            <span>Perú</span>
+          </div>
+        </div>
+      </section>
+
       <section className="projects shell" id="proyectos">
         <div className="section-intro">
-          <span className="section-index">01 / TRABAJO SELECCIONADO</span>
+          <span className="section-index">02 / TRABAJO SELECCIONADO</span>
           <h2>Siete proyectos.<br />Siete problemas reales resueltos.</h2>
           <p>
             Cada caso combina criterio de producto, interfaz, arquitectura y ejecución.
@@ -388,43 +424,6 @@ export default function Home() {
             </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="about shell" id="sobre-mi">
-        <div className="about-visual">
-          <div className="portrait-bubble">
-            <img src="/andree-profile.png" alt="Retrato de Andree Mungi" />
-          </div>
-          <div className="cat-bubble">
-            <img src="/andree-cat.png" alt="El gato de Andree" />
-          </div>
-          <div className="about-orbit" aria-hidden="true" />
-          <span className="about-visual-label">INGENIERÍA + PRODUCTO</span>
-          <span className="cat-label">MI COMPAÑERO DE IDEAS</span>
-        </div>
-        <div className="about-content">
-          <span className="section-index">02 / SOBRE MÍ</span>
-          <p className="about-kicker">Hola, soy Andree Mungi.</p>
-          <h2>
-            Te ayudo a dar el <strong>salto</strong> a la{" "}
-            <strong>digitalización</strong> de tu empresa.
-          </h2>
-          <p className="about-copy">
-            Soy egresado de <strong>Ingeniería Mecatrónica de UTEC</strong> y llevo{" "}
-            <strong>más de dos años</strong> desarrollando soluciones de software.
-            Ayudo a empresas a transformar sus procesos, competir mejor y abrir nuevas
-            oportunidades con <strong>tecnología hecha a su medida</strong>.
-          </p>
-          <p className="about-personal">
-            Trabajo desde <strong>Perú</strong>, disfruto unir software y hardware y,
-            cuando cierro la laptop, probablemente estoy pasando tiempo con mi gato.
-          </p>
-          <div className="about-facts" aria-label="Datos sobre Andree">
-            <span>UTEC · Ing. Mecatrónica</span>
-            <span>2+ años en software</span>
-            <span>Perú</span>
-          </div>
         </div>
       </section>
 
