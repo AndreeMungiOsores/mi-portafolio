@@ -2,33 +2,19 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
 
 # next.js
 /.next/
-/.vinext/
 /out/
 
 # misc
 .DS_Store
 *.pem
+.claude/
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
 .dev-server.*.log
-/public/*-project-preview.png
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -38,7 +24,9 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
-/dist/
-/.wrangler/
-/outputs/
-/work/
+
+# capturas de trabajo que no se publican
+/public/*-project-preview.png
+
+# fuentes de video sin comprimir (los originales viven fuera del repo)
+/media-src/

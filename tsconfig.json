@@ -30,15 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
 , "next.config.mjs"  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "db",
-    "dist",
-    "drizzle",
-    "drizzle.config.ts",
-    "examples",
-    "vite.config.ts",
-    "worker"
-  ]
+  "exclude": ["node_modules", "out", "scripts", "tests"]
 }

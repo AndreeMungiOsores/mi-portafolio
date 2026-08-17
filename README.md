@@ -1,98 +1,96 @@
-# vinext-starter
+# Portafolio de Andree Mungi
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Sitio personal en español: portafolio de software más dos páginas de servicio
+(videos publicitarios y páginas web). Next.js 16 con App Router, exportado como
+sitio **100% estático** — no hay servidor ni base de datos.
 
-## Prerequisites
+## Requisitos
 
 - Node.js `>=22.13.0`
+- [ffmpeg](https://ffmpeg.org) solo si vas a regenerar los videos
 
-## Quick Start
+## Empezar
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+Abre http://localhost:3000.
 
-## Included Shape
+## Comandos
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+| Comando | Qué hace |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo con recarga en caliente |
+| `npm run build` | Exporta el sitio estático a `out/` |
+| `npm run preview` | Sirve `out/` en http://localhost:4321 (con soporte de rangos para video) |
+| `npm run videos` | Convierte los videos originales a versiones web |
+| `npm test` | Hace el build y verifica el HTML exportado |
+| `npm run lint` | ESLint |
 
-## Workspace Auth Headers
+## Estructura
 
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```
+app/
+  page.tsx                    portada: hero, sobre mí, 7 proyectos, enfoque
+  ProjectCarousel.tsx         carrusel de capturas de cada proyecto
+  SiteNav.tsx / SiteFooter.tsx   navegación y contacto compartidos
+  globals.css                 todos los estilos (CSS a mano, sin utilidades)
+  servicios/
+    videos/
+      page.tsx                landing del servicio de video
+      ReelGrid.tsx            galería con reproductor a pantalla completa
+      reels.ts                ✏️ textos de cada video
+      manifest.json           generado por `npm run videos` — no editar a mano
+    web/page.tsx              landing del servicio de páginas web
+public/videos/                videos comprimidos + posters
+scripts/                      utilidades de build (video, servidor de preview)
+tests/                        verificación del sitio exportado
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+Las tres rutas son estáticas: `/`, `/servicios/videos` y `/servicios/web`.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+## Editar el contenido
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+- **Proyectos del portafolio**: el array `projects` al inicio de `app/page.tsx`.
+  El orden que se muestra lo define `orderedProjects` justo debajo.
+- **Textos de cada video**: el objeto `COPY` en `app/servicios/videos/reels.ts`.
+  Las dimensiones y el peso salen del manifiesto, no se tocan.
+- **Paquetes y precios**: las constantes `PAQUETES` al inicio de
+  `app/servicios/videos/page.tsx` y `app/servicios/web/page.tsx`. El campo
+  `price` es texto libre.
+- **Preguntas frecuentes**: la constante `FAQ` en `app/servicios/web/page.tsx`.
+- **WhatsApp**: la constante `WHATSAPP` en `app/SiteFooter.tsx`.
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## Agregar o actualizar videos
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+Los originales sin comprimir **no viven en el repositorio**: pesan cientos de
+megas. El flujo es:
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+```bash
+npm run videos
+```
 
-## Useful Commands
+Por defecto lee `C:/Users/Andree/Desktop/marketing/videos`. Para otra carpeta:
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+```bash
+npm run videos -- "D:/ruta/a/mis/videos"
+```
 
-## Learn More
+El script convierte cada archivo a H.264 de 720p (~3 MB por pieza frente a los
+~25 MB del original), extrae un poster, los deja en `public/videos/` y reescribe
+`app/servicios/videos/manifest.json`. Si aparece un video nuevo te avisa que le
+falta texto en `reels.ts`.
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+## Despliegue
+
+El build genera HTML plano en `out/`, así que sirve cualquier hosting estático.
+Hay dos caminos ya configurados:
+
+- **Vercel**: detecta Next.js y publica solo (`vercel.json`).
+- **GitHub Pages**: `.github/workflows/nextjs.yml` construye y publica en cada
+  push a `main`.
+
+Ten en cuenta que `public/videos/` pesa unos 40 MB; si el hosting cobra por
+ancho de banda, conviene moverlos a un CDN y apuntar `src` en el manifiesto.

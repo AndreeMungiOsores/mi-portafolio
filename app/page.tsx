@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ProjectCarousel } from "./ProjectCarousel";
+import { SiteNav } from "./SiteNav";
+import { SiteFooter } from "./SiteFooter";
 
 export const metadata: Metadata = {
   title: "Andree — Portafolio de software",
@@ -252,32 +255,21 @@ function ProjectVisual({
 
 export default function Home() {
   return (
-    <main>
-      <nav className="nav shell" aria-label="Navegación principal">
-        <a className="brand" href="#inicio" aria-label="Volver al inicio">
-          <img src="/andree-profile.png" alt="" />
-          <span>Portafolio de Andree Mungi</span>
-        </a>
-        <div className="nav-links">
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#proyectos">Proyectos</a>
-          <a href="#enfoque">Enfoque</a>
-          <a className="nav-cta" href="#contacto">Conversemos ↗</a>
-        </div>
-      </nav>
+    <main className="snap-page">
+      <SiteNav active="home" />
 
       <header className="hero shell" id="inicio">
         <h1>
-          Software que convierte
-          <span> procesos complejos </span>
-          en productos claros.
+          Herramientas digitales
+          construidas para resolver
+          <span> problemas reales.</span>
         </h1>
         <div className="hero-bottom">
           <p>
-            Diseño y construyo productos digitales, automatizaciones y sistemas internos
-            que conectan tecnología, operación y resultados de negocio.
+            Desarrollador full-stack y automatizador. Ayudo a negocios a digitalizar
+            procesos con tecnología rápida, segura y a medida.
           </p>
-          <a href="#proyectos" className="round-link" aria-label="Ver proyectos">↓</a>
+          <a href="#sobre-mi" className="round-link" aria-label="Ir a la sección sobre mí">↓</a>
         </div>
         <div className="hero-strip" aria-label="Especialidades">
           <span>PRODUCTO DIGITAL</span><i />
@@ -290,9 +282,11 @@ export default function Home() {
       <section className="about shell" id="sobre-mi">
         <div className="about-visual">
           <div className="portrait-bubble">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/andree-profile.png" alt="Retrato de Andree Mungi" />
           </div>
           <div className="cat-bubble">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/andree-cat.png" alt="El gato de Andree" />
           </div>
           <div className="about-orbit" aria-hidden="true" />
@@ -370,8 +364,43 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="video-feature shell" id="videos-ia">
+        <div className="video-feature-card">
+          <div className="video-feature-content">
+            <span className="section-index">03 / PRODUCCIÓN AUDIOVISUAL CON IA</span>
+            <h2>
+              ¿Quieres vender más con video sin gastar en rodajes?
+              <span> Creo anuncios con Inteligencia Artificial.</span>
+            </h2>
+            <p>
+              Produzco reels y spots optimizados para captar atención en los primeros 3 segundos:
+              guiones persuasivos, avatares y voces hiperrealistas, edición dinámica y entrega
+              lista para pautar en 48 a 72 horas.
+            </p>
+            <div className="video-feature-pills" aria-label="Beneficios de producción de video con IA">
+              <span>✓ -70% de costo vs rodaje tradicional</span>
+              <span>✓ Entrega en 48-72 horas</span>
+              <span>✓ Variantes A/B para Meta & TikTok Ads</span>
+            </div>
+            <Link className="video-feature-btn" href="/servicios/videos">
+              Ver galería y piezas con IA ↗
+            </Link>
+          </div>
+          <div className="video-feature-visual" aria-hidden="true">
+            <div className="video-feature-badge">
+              <b>100% IA</b>
+              <small>Producción ágil y medible</small>
+            </div>
+            <div className="video-feature-preview">
+              <span>9:16 + 1:1</span>
+              <p>Reels · TikToks · Ads</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="approach shell" id="enfoque">
-        <span className="section-index">03 / CÓMO TRABAJO</span>
+        <span className="section-index">04 / CÓMO TRABAJO</span>
         <div className="approach-grid">
           <h2>De una fricción operativa a un producto usable.</h2>
           <div className="steps">
@@ -390,7 +419,7 @@ export default function Home() {
       </section>
 
       <section className="capabilities shell">
-        <span className="section-index">04 / CAPACIDADES</span>
+        <span className="section-index">05 / CAPACIDADES</span>
         <div className="capability-grid">
           <h2>Producto, tecnología y operación en una sola conversación.</h2>
           <div className="capability-list">
@@ -404,30 +433,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer" id="contacto">
-        <div className="shell footer-inner">
-          <p>¿Tienes un proceso que debería funcionar mejor?</p>
-          <h2>Construyamos<br />la solución.</h2>
-          <a
-            className="whatsapp-button"
-            href="https://wa.me/51961556197"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Mandar un mensaje a Andree por WhatsApp"
-          >
-            <span className="whatsapp-icon" aria-hidden="true">☎</span>
-            <span>
-              <small>HABLEMOS POR WHATSAPP</small>
-              Mandar mensaje
-            </span>
-            <b aria-hidden="true">↗</b>
-          </a>
-          <div className="footer-row">
-            <span>Disponible para proyectos de producto, automatización y software a medida.</span>
-            <a href="#inicio">Volver arriba ↑</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

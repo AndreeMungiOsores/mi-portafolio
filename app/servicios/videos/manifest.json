@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "reel-0108",
+    "source": "0108.mp4",
+    "src": "/videos/reel-0108.mp4",
+    "poster": "/videos/reel-0108.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 15,
+    "bytes": 4474420
+  },
+  {
+    "slug": "reel-0118",
+    "source": "0118.mp4",
+    "src": "/videos/reel-0118.mp4",
+    "poster": "/videos/reel-0118.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 15,
+    "bytes": 3791345
+  },
+  {
+    "slug": "reel-0127",
+    "source": "0127(1).mp4",
+    "src": "/videos/reel-0127.mp4",
+    "poster": "/videos/reel-0127.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 15,
+    "bytes": 2408228
+  },
+  {
+    "slug": "reel-0204",
+    "source": "0204(1).mp4",
+    "src": "/videos/reel-0204.mp4",
+    "poster": "/videos/reel-0204.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 15,
+    "bytes": 3370164
+  },
+  {
+    "slug": "reel-0217",
+    "source": "0217.mp4",
+    "src": "/videos/reel-0217.mp4",
+    "poster": "/videos/reel-0217.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 14,
+    "bytes": 2639182
+  },
+  {
+    "slug": "reel-0723",
+    "source": "0723.mp4",
+    "src": "/videos/reel-0723.mp4",
+    "poster": "/videos/reel-0723.jpg",
+    "width": 720,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 20,
+    "bytes": 3089592
+  },
+  {
+    "slug": "reel-0731",
+    "source": "0731(1).mp4",
+    "src": "/videos/reel-0731.mp4",
+    "poster": "/videos/reel-0731.jpg",
+    "width": 720,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 30,
+    "bytes": 4375940
+  },
+  {
+    "slug": "reel-0804",
+    "source": "0804(1).mp4",
+    "src": "/videos/reel-0804.mp4",
+    "poster": "/videos/reel-0804.jpg",
+    "width": 720,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 30,
+    "bytes": 7511656
+  },
+  {
+    "slug": "tiktok",
+    "source": "tiktok.mp4",
+    "src": "/videos/tiktok.mp4",
+    "poster": "/videos/tiktok.jpg",
+    "width": 704,
+    "height": 1280,
+    "orientation": "vertical",
+    "duration": 15,
+    "bytes": 4867802
+  },
+  {
+    "slug": "publicidad-modificado-ceba",
+    "source": "Publicidad Modificado CEBA.mp4",
+    "src": "/videos/publicidad-modificado-ceba.mp4",
+    "poster": "/videos/publicidad-modificado-ceba.jpg",
+    "width": 1280,
+    "height": 720,
+    "orientation": "horizontal",
+    "duration": 36,
+    "bytes": 6034116
+  }
+]
