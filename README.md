@@ -33,7 +33,7 @@ Abre http://localhost:3000.
 
 ```
 app/
-  page.tsx                    portada: hero, sobre mí, 7 proyectos, enfoque
+  page.tsx                    portada: hero, sobre mí, 8 proyectos, enfoque
   ProjectCarousel.tsx         carrusel de capturas de cada proyecto
   SiteNav.tsx / SiteFooter.tsx   navegación y contacto compartidos
   globals.css                 todos los estilos (CSS a mano, sin utilidades)

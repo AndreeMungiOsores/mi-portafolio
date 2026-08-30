@@ -10,6 +10,7 @@
   --coral: #ff6b58;
   --cyan: #62d8d3;
   --orange: #ff9a3d;
+  --gold: #c6a15b;
 }
 
 * {
@@ -289,6 +290,7 @@ a {
 .tone-cyan { --accent: var(--cyan); }
 .tone-orange { --accent: var(--orange); }
 .tone-red { --accent: #ff4b45; }
+.tone-gold { --accent: var(--gold); }
 
 .project-heading {
   display: grid;
@@ -331,6 +333,26 @@ a {
   color: #c8c5bd;
   font-size: clamp(13px, 1.15vw, 16px);
   line-height: 1.4;
+}
+
+.project-live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  padding: 7px 13px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.project-live-link:hover {
+  background: var(--accent);
+  color: var(--ink);
 }
 
 .project-visual {

@@ -36,19 +36,19 @@ const exists = (path) =>
     () => false,
   );
 
-test("la portada conserva el hero, los 7 proyectos y el contacto", async () => {
+test("la portada conserva el hero, los 8 proyectos y el contacto", async () => {
   const html = await readPage("/");
 
   assert.match(html, /Herramientas digitales/);
   assert.match(html, /Portafolio de Andree Mungi/);
   assert.match(html, /wa\.me\/51961556197/);
 
-  for (const anchor of ["proyecto-01", "proyecto-04", "proyecto-07"]) {
+  for (const anchor of ["proyecto-01", "proyecto-04", "proyecto-08"]) {
     assert.match(html, new RegExp(`id="${anchor}"`), `falta el ancla ${anchor}`);
   }
 
   const cards = html.match(/class="project-card/g) ?? [];
-  assert.equal(cards.length, 7, "deberían quedar 7 tarjetas de proyecto");
+  assert.equal(cards.length, 8, "deberían quedar 8 tarjetas de proyecto");
 });
 
 test("la portada enlaza la pestaña de servicio de videos", async () => {

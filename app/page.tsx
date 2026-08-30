@@ -220,10 +220,64 @@ const projects = [
       },
     ],
   },
+  {
+    number: "08",
+    title: "EuroBraces Center",
+    eyebrow: "Clínica dental · Sitio + panel de administración a medida",
+    lead: "Un sitio de conversión para una clínica de ortodoncia, con un panel para que el equipo lo administre sin depender de un desarrollador.",
+    liveUrl: "https://www.eurobraces.com",
+    tone: "gold",
+    challenge:
+      "La clínica necesitaba una web profesional y, sobre todo, una forma de que el propio equipo actualizara casos clínicos, reseñas y contenido sin tocar código — y no aparecía en Google buscando su nombre.",
+    solution:
+      "Construí el sitio completo sin framework (HTML/CSS/JS puro, ~40 KB) y un panel de administración propio conectado a Supabase: gestión de casos clínicos, opiniones, motivos de consulta con comparador antes/después, fotos de pacientes y perfil del especialista. Sumé una capa de SEO técnico completa —datos estructurados, sitemap, Search Console, optimización de imágenes— y conecté la ficha de Google del negocio.",
+    impact:
+      "El sitio pasó a indexarse en horas y ya aparece en primera página buscando al especialista por nombre. El equipo publica casos y reseñas nuevas desde el panel, sin escribir una línea de código.",
+    stack: ["HTML/CSS/JS", "Supabase", "SEO técnico", "Structured Data", "Panel a medida", "Vercel"],
+    deliverables: ["Sitio público", "Panel de administración", "SEO técnico"],
+    carousel: [
+      {
+        src: "/projects/eurobraces-home-hero.jpg",
+        alt: "Portada de EuroBraces Center con el mensaje principal de la clínica",
+        label: "Sitio público",
+      },
+      {
+        src: "/projects/eurobraces-home-diagnostico.jpg",
+        alt: "Comparador antes y después para elegir el tratamiento según el motivo de consulta",
+        label: "Comparador antes/después",
+      },
+      {
+        src: "/projects/eurobraces-casos-clinicos.jpg",
+        alt: "Galería pública de casos clínicos documentados de la clínica",
+        label: "Casos clínicos",
+      },
+      {
+        src: "/projects/eurobraces-opiniones.png",
+        alt: "Sección de opiniones de pacientes enlazadas a sus reseñas originales de Google",
+        label: "Opiniones",
+      },
+      {
+        src: "/projects/eurobraces-admin-casos.png",
+        alt: "Panel de administración con la tabla de gestión de casos clínicos",
+        label: "Admin · Casos clínicos",
+      },
+      {
+        src: "/projects/eurobraces-admin-diagnostico.png",
+        alt: "Panel de administración para editar los motivos de consulta y sus fotos de antes/después",
+        label: "Admin · Motivos de consulta",
+      },
+      {
+        src: "/projects/eurobraces-admin-pacientes.jpg",
+        alt: "Panel de administración con la galería de fotos de pacientes",
+        label: "Admin · Fotos de pacientes",
+      },
+    ],
+  },
 ] as const;
 
 const orderedProjects = [
   projects[0],
+  projects[7],
   projects[6],
   projects[1],
   projects[2],
@@ -321,7 +375,7 @@ export default function Home() {
       <section className="projects shell" id="proyectos">
         <div className="section-intro">
           <span className="section-index">02 / TRABAJO SELECCIONADO</span>
-          <h2>Siete proyectos.<br />Siete problemas reales resueltos.</h2>
+          <h2>Ocho proyectos.<br />Ocho problemas reales resueltos.</h2>
           <p>
             Cada caso combina criterio de producto, interfaz, arquitectura y ejecución.
             El foco no está en mostrar código: está en explicar la decisión y el valor creado.
@@ -344,6 +398,16 @@ export default function Home() {
                   <p className="project-eyebrow">{project.eyebrow}</p>
                   <h3>{project.title}</h3>
                   <p className="project-lead">{project.lead}</p>
+                  {"liveUrl" in project && (
+                    <a
+                      className="project-live-link"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ver sitio en vivo ↗
+                    </a>
+                  )}
                 </div>
               </div>
               <ProjectVisual project={project} />
