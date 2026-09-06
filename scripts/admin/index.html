@@ -1,0 +1,494 @@
+<title>Admin — Portafolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --ink: #09090b;
+    --panel: #17171b;
+    --panel-2: #1f1f24;
+    --line: rgba(255, 255, 255, 0.12);
+    --text: #f3f0e9;
+    --muted: #9c9a95;
+    --lime: #c8ff3d;
+    --danger: #ff6b58;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding-bottom: 120px;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 24px;
+    background: rgba(9, 9, 11, 0.95);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  header h1 { font-size: 16px; margin: 0; }
+  header p { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+  #save-btn {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--lime);
+    color: #09090b;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  #save-btn:disabled { opacity: 0.5; cursor: default; }
+  #status {
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 160px;
+    text-align: right;
+  }
+  #status.ok { color: var(--lime); }
+  #status.error { color: var(--danger); }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    gap: 18px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-top input[type="number"] {
+    width: 56px;
+    text-align: center;
+  }
+  .card-title {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .field {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .field label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .row { display: flex; gap: 12px; }
+  .row > .field { flex: 1; }
+  input[type="text"], input[type="url"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+  }
+  textarea { resize: vertical; min-height: 52px; }
+  details { margin-top: 8px; }
+  summary {
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 4px 0;
+  }
+  .images-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 16px 0 8px;
+  }
+  .image-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .image-item img {
+    width: 96px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #000;
+    flex: 0 0 auto;
+  }
+  .image-item .field { margin-bottom: 6px; }
+  .image-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 0 0 auto;
+  }
+  .image-actions button {
+    width: 32px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .image-actions button.remove { color: var(--danger); }
+  .add-image {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .add-image input { display: none; }
+  .single-image {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .single-image img {
+    width: 140px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #000;
+  }
+  .hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .loading { padding: 60px; text-align: center; color: var(--muted); }
+</style>
+
+<header>
+  <div>
+    <h1>Panel de administración — Portafolio</h1>
+    <p>Solo local. Las imágenes se guardan al subirlas; los textos se guardan al hacer clic en "Guardar cambios".</p>
+  </div>
+  <div id="status"></div>
+  <button id="save-btn">Guardar cambios</button>
+</header>
+
+<main id="app">
+  <div class="loading">Cargando…</div>
+</main>
+
+<script>
+let projects = [];
+
+const TONES = ["red", "violet", "lime", "coral", "cyan", "orange", "gold"];
+
+async function load() {
+  const res = await fetch("/api/data");
+  projects = await res.json();
+  render();
+}
+
+function setStatus(text, kind) {
+  const el = document.getElementById("status");
+  el.textContent = text;
+  el.className = kind || "";
+}
+
+function byId(id) {
+  return document.getElementById(id);
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadImage(file) {
+  const dataUrl = await fileToDataUrl(file);
+  const res = await fetch("/api/upload", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ dataUrl, filename: file.name }),
+  });
+  if (!res.ok) throw new Error("No se pudo subir la imagen");
+  const data = await res.json();
+  return data.path;
+}
+
+function toneOptions(selected) {
+  return TONES.map((t) => `<option value="${t}"${t === selected ? " selected" : ""}>${t}</option>`).join("");
+}
+
+function renderCarouselItem(projectIndex, slideIndex, slide) {
+  return `
+    <div class="image-item" data-slide="${slideIndex}">
+      <img src="${slide.src}" alt="" />
+      <div style="flex:1">
+        <div class="field">
+          <label>Etiqueta</label>
+          <input type="text" data-field="label" value="${escapeAttr(slide.label)}" />
+        </div>
+        <div class="field">
+          <label>Texto alternativo (accesibilidad)</label>
+          <input type="text" data-field="alt" value="${escapeAttr(slide.alt)}" />
+        </div>
+        <label class="add-image" style="padding:6px 10px;">
+          Reemplazar imagen
+          <input type="file" accept="image/*" data-action="replace-slide" />
+        </label>
+      </div>
+      <div class="image-actions">
+        <button type="button" data-action="move-up" title="Subir">↑</button>
+        <button type="button" data-action="move-down" title="Bajar">↓</button>
+        <button type="button" class="remove" data-action="remove-slide" title="Eliminar">✕</button>
+      </div>
+    </div>
+  `;
+}
+
+function escapeAttr(value) {
+  return String(value ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
+function renderProject(project, index) {
+  const isCarousel = Array.isArray(project.carousel);
+  const isSingle = typeof project.image === "string";
+
+  const imagesHtml = isCarousel
+    ? `
+      <div class="images-title">Galería (${project.carousel.length} imágenes)</div>
+      <div data-slides>
+        ${project.carousel.map((s, i) => renderCarouselItem(index, i, s)).join("")}
+      </div>
+      <label class="add-image">
+        + Agregar imagen
+        <input type="file" accept="image/*" data-action="add-slide" />
+      </label>
+    `
+    : isSingle
+      ? `
+        <div class="images-title">Imagen</div>
+        <div class="single-image">
+          <img src="${project.image}" alt="" />
+          <div style="flex:1">
+            <div class="field">
+              <label>Texto alternativo (accesibilidad)</label>
+              <input type="text" data-field="imageAlt" value="${escapeAttr(project.imageAlt)}" />
+            </div>
+            <label class="add-image" style="padding:6px 10px;">
+              Reemplazar imagen
+              <input type="file" accept="image/*" data-action="replace-single" />
+            </label>
+          </div>
+        </div>
+      `
+      : `<p class="hint">Este proyecto no tiene imagen configurada.</p>`;
+
+  return `
+    <div class="card" data-project="${index}">
+      <div class="card-top">
+        <div class="field" style="margin:0;">
+          <label>Orden</label>
+          <input type="number" data-field="order" value="${project.order}" />
+        </div>
+        <div class="card-title">${escapeAttr(project.title)}</div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Título</label>
+          <input type="text" data-field="title" value="${escapeAttr(project.title)}" />
+        </div>
+        <div class="field">
+          <label>Tono de color</label>
+          <select data-field="tone">${toneOptions(project.tone)}</select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Eyebrow (categoría corta arriba del título)</label>
+        <input type="text" data-field="eyebrow" value="${escapeAttr(project.eyebrow)}" />
+      </div>
+
+      <div class="field">
+        <label>Descripción corta (se ve junto al título)</label>
+        <textarea data-field="lead">${escapeAttr(project.lead)}</textarea>
+      </div>
+
+      <div class="field">
+        <label>Enlace al sitio en vivo (opcional)</label>
+        <input type="url" data-field="liveUrl" placeholder="https://..." value="${escapeAttr(project.liveUrl)}" />
+      </div>
+
+      <div class="field">
+        <label>Stack / tecnologías (separadas por coma)</label>
+        <input type="text" data-field="stack" value="${escapeAttr((project.stack || []).join(", "))}" />
+      </div>
+
+      <details>
+        <summary>Detalles ampliados (no se muestran en la portada, quedan guardados para el futuro)</summary>
+        <div class="field">
+          <label>Desafío</label>
+          <textarea data-field="challenge">${escapeAttr(project.challenge)}</textarea>
+        </div>
+        <div class="field">
+          <label>Solución</label>
+          <textarea data-field="solution">${escapeAttr(project.solution)}</textarea>
+        </div>
+        <div class="field">
+          <label>Impacto</label>
+          <textarea data-field="impact">${escapeAttr(project.impact)}</textarea>
+        </div>
+      </details>
+
+      ${imagesHtml}
+    </div>
+  `;
+}
+
+function render() {
+  const sorted = [...projects].sort((a, b) => a.order - b.order);
+  byId("app").innerHTML = sorted.map((p) => renderProject(p, projects.indexOf(p))).join("");
+  attachHandlers();
+}
+
+function attachHandlers() {
+  document.querySelectorAll(".card").forEach((card) => {
+    const index = Number(card.dataset.project);
+    const project = projects[index];
+
+    card.querySelectorAll("[data-field]").forEach((input) => {
+      if (input.closest(".image-item")) return;
+      input.addEventListener("input", () => {
+        const field = input.dataset.field;
+        if (field === "order") project.order = Number(input.value) || 0;
+        else if (field === "stack") project.stack = input.value.split(",").map((s) => s.trim()).filter(Boolean);
+        else project[field] = input.value;
+      });
+    });
+
+    card.querySelectorAll("[data-slides] .image-item").forEach((item) => {
+      const slideIndex = Number(item.dataset.slide);
+      const slide = project.carousel[slideIndex];
+
+      item.querySelectorAll("[data-field]").forEach((input) => {
+        input.addEventListener("input", () => {
+          slide[input.dataset.field] = input.value;
+        });
+      });
+
+      item.querySelector('[data-action="move-up"]').addEventListener("click", () => {
+        if (slideIndex === 0) return;
+        [project.carousel[slideIndex - 1], project.carousel[slideIndex]] =
+          [project.carousel[slideIndex], project.carousel[slideIndex - 1]];
+        render();
+      });
+
+      item.querySelector('[data-action="move-down"]').addEventListener("click", () => {
+        if (slideIndex === project.carousel.length - 1) return;
+        [project.carousel[slideIndex + 1], project.carousel[slideIndex]] =
+          [project.carousel[slideIndex], project.carousel[slideIndex + 1]];
+        render();
+      });
+
+      item.querySelector('[data-action="remove-slide"]').addEventListener("click", () => {
+        if (!confirm("¿Eliminar esta imagen de la galería?")) return;
+        project.carousel.splice(slideIndex, 1);
+        render();
+      });
+
+      const replaceInput = item.querySelector('[data-action="replace-slide"]');
+      replaceInput.addEventListener("change", async () => {
+        const file = replaceInput.files[0];
+        if (!file) return;
+        setStatus("Subiendo imagen…");
+        try {
+          const path = await uploadImage(file);
+          slide.src = path;
+          setStatus("Imagen subida — recuerda Guardar cambios", "ok");
+          render();
+        } catch (e) {
+          setStatus(e.message, "error");
+        }
+      });
+    });
+
+    const addSlideInput = card.querySelector('[data-action="add-slide"]');
+    if (addSlideInput) {
+      addSlideInput.addEventListener("change", async () => {
+        const file = addSlideInput.files[0];
+        if (!file) return;
+        setStatus("Subiendo imagen…");
+        try {
+          const path = await uploadImage(file);
+          project.carousel.push({ src: path, alt: "", label: "Nueva vista" });
+          setStatus("Imagen agregada — recuerda Guardar cambios", "ok");
+          render();
+        } catch (e) {
+          setStatus(e.message, "error");
+        }
+      });
+    }
+
+    const replaceSingleInput = card.querySelector('[data-action="replace-single"]');
+    if (replaceSingleInput) {
+      replaceSingleInput.addEventListener("change", async () => {
+        const file = replaceSingleInput.files[0];
+        if (!file) return;
+        setStatus("Subiendo imagen…");
+        try {
+          const path = await uploadImage(file);
+          project.image = path;
+          setStatus("Imagen subida — recuerda Guardar cambios", "ok");
+          render();
+        } catch (e) {
+          setStatus(e.message, "error");
+        }
+      });
+    }
+  });
+}
+
+byId("save-btn").addEventListener("click", async () => {
+  byId("save-btn").disabled = true;
+  setStatus("Guardando…");
+  try {
+    const res = await fetch("/api/data", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(projects),
+    });
+    if (!res.ok) throw new Error((await res.json()).error || "Error al guardar");
+    setStatus("Guardado ✓", "ok");
+  } catch (e) {
+    setStatus(e.message, "error");
+  } finally {
+    byId("save-btn").disabled = false;
+  }
+});
+
+load().catch((e) => {
+  byId("app").innerHTML = `<p class="hint">Error cargando datos: ${e.message}</p>`;
+});
+</script>

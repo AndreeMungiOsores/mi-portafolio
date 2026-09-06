@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "app/globals.css"
+        ],
+        "createdAt": "2026-09-06T03:11:49.629Z",
+        "reason": "design judgment: .gallery-dots button morphs circle->pill; transform/scaleX would distort the inactive dot's circularity for negligible perf gain on a 6px element"
+      }
+    ]
+  }
+}

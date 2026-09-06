@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Syne } from "next/font/google";
 import "./globals.css";
+import { AnchorScrollFix } from "./AnchorScrollFix";
+import { LanguageProvider } from "./i18n";
 
 const archivo = Archivo({
   variable: "--font-body",
@@ -43,7 +45,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${archivo.variable} ${syne.variable}`}>
-        {children}
+        <LanguageProvider>
+          <AnchorScrollFix />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

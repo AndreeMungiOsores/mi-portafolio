@@ -24,6 +24,13 @@ npm-debug.log*
 
 # typescript
 next-env.d.ts
+tsconfig.tsbuildinfo
+
+# impeccable: local-only consent/cache/session files (config.json and
+# critique/ snapshots are shared and tracked)
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/live/
 
 # capturas de trabajo que no se publican
 /public/*-project-preview.png

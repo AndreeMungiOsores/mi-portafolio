@@ -1,44 +1,52 @@
+"use client";
+
+import { useLanguage } from "./i18n";
+
 const WHATSAPP = "https://wa.me/51961556197";
 
 export function SiteFooter({
-  kicker = "¿Tienes un proceso que debería funcionar mejor?",
-  headline = (
-    <>
-      Construyamos
-      <br />
-      la solución.
-    </>
-  ),
-  note = "Disponible para proyectos de producto, automatización y software a medida.",
+  kicker,
+  headline,
+  note,
 }: {
   kicker?: string;
   headline?: React.ReactNode;
   note?: string;
 }) {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer" id="contacto">
       <div className="shell footer-inner">
-        <p>{kicker}</p>
-        <h2>{headline}</h2>
+        <p>{kicker ?? t.footerKicker}</p>
+        <h2>
+          {headline ?? (
+            <>
+              {t.footerHeadlineLine1}
+              <br />
+              {t.footerHeadlineLine2}
+            </>
+          )}
+        </h2>
         <a
           className="whatsapp-button"
           href={WHATSAPP}
           target="_blank"
           rel="noreferrer"
-          aria-label="Mandar un mensaje a Andree por WhatsApp"
+          aria-label={t.whatsappAria}
         >
           <span className="whatsapp-icon" aria-hidden="true">
             ☎
           </span>
           <span>
-            <small>HABLEMOS POR WHATSAPP</small>
-            Mandar mensaje
+            <small>{t.whatsappSmall}</small>
+            {t.whatsappB}
           </span>
           <b aria-hidden="true">↗</b>
         </a>
         <div className="footer-row">
-          <span>{note}</span>
-          <a href="#inicio">Volver arriba ↑</a>
+          <span>{note ?? t.footerNote}</span>
+          <a href="#inicio">{t.backToTop}</a>
         </div>
       </div>
     </footer>

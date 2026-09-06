@@ -11,6 +11,7 @@
     "build": "next build",
     "preview": "node scripts/serve-out.mjs",
     "videos": "node scripts/build-videos.mjs",
+    "admin": "node scripts/admin-server.mjs",
     "test": "npm run build && node --test tests/exported-site.test.mjs",
     "lint": "eslint ."
   },
