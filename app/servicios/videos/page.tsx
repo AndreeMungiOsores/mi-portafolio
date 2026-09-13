@@ -24,7 +24,7 @@ const PROCESO = [
 
 export default function VideosPage() {
   return (
-    <main className="service-page">
+    <main className="service-page video-service-page">
       <SiteNav active="videos" />
 
       <header className="service-hero shell" id="inicio">

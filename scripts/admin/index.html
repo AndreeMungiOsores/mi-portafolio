@@ -55,12 +55,24 @@
   #status.ok { color: var(--lime); }
   #status.error { color: var(--danger); }
   main {
-    max-width: 900px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 24px;
     display: grid;
     gap: 18px;
   }
+  .project-switcher {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 12px;
+    padding: 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .project-switcher .field { margin: 0; }
+  .project-count { font-size: 12px; color: var(--muted); padding-bottom: 10px; }
   .card {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -77,6 +89,7 @@
     width: 56px;
     text-align: center;
   }
+  .position-control { width: 150px; margin: 0; }
   .card-title {
     flex: 1;
     font-size: 18px;
@@ -196,13 +209,46 @@
 
 <script>
 let projects = [];
+let activeProjectIndex = null;
 
-const TONES = ["red", "violet", "lime", "coral", "cyan", "orange", "gold"];
+const TONES = ["red", "black", "violet", "lime", "coral", "cyan", "orange", "gold"];
+const TONE_LABELS = {
+  red: "Rojo",
+  black: "Negro",
+  violet: "Violeta",
+  lime: "Lima",
+  coral: "Coral",
+  cyan: "Cian",
+  orange: "Naranja",
+  gold: "Dorado",
+};
 
 async function load() {
   const res = await fetch("/api/data");
   projects = await res.json();
+  normalizeOrders();
   render();
+}
+
+function orderedProjects() {
+  return [...projects].sort((a, b) => a.order - b.order || projects.indexOf(a) - projects.indexOf(b));
+}
+
+function normalizeOrders() {
+  orderedProjects().forEach((project, index) => {
+    project.order = index + 1;
+  });
+}
+
+function moveProject(projectIndex, targetPosition) {
+  const project = projects[projectIndex];
+  const ordered = orderedProjects();
+  const currentPosition = ordered.indexOf(project);
+  const nextPosition = Math.max(0, Math.min(ordered.length - 1, targetPosition - 1));
+  ordered.splice(currentPosition, 1);
+  ordered.splice(nextPosition, 0, project);
+  ordered.forEach((item, index) => { item.order = index + 1; });
+  activeProjectIndex = projects.indexOf(project);
 }
 
 function setStatus(text, kind) {
@@ -237,7 +283,7 @@ async function uploadImage(file) {
 }
 
 function toneOptions(selected) {
-  return TONES.map((t) => `<option value="${t}"${t === selected ? " selected" : ""}>${t}</option>`).join("");
+  return TONES.map((t) => `<option value="${t}"${t === selected ? " selected" : ""}>${TONE_LABELS[t]}</option>`).join("");
 }
 
 function renderCarouselItem(projectIndex, slideIndex, slide) {
@@ -308,9 +354,11 @@ function renderProject(project, index) {
   return `
     <div class="card" data-project="${index}">
       <div class="card-top">
-        <div class="field" style="margin:0;">
-          <label>Orden</label>
-          <input type="number" data-field="order" value="${project.order}" />
+        <div class="field position-control">
+          <label for="move-position">Posición</label>
+          <select id="move-position" aria-label="Mover proyecto a una posición">
+            ${projects.map((_, position) => `<option value="${position + 1}"${position + 1 === project.order ? " selected" : ""}>${position + 1}</option>`).join("")}
+          </select>
         </div>
         <div class="card-title">${escapeAttr(project.title)}</div>
       </div>
@@ -337,6 +385,11 @@ function renderProject(project, index) {
       </div>
 
       <div class="field">
+        <label>Descripción adicional (párrafo debajo del resumen; déjalo vacío para ocultarlo)</label>
+        <textarea data-field="impact">${escapeAttr(project.impact)}</textarea>
+      </div>
+
+      <div class="field">
         <label>Enlace al sitio en vivo (opcional)</label>
         <input type="url" data-field="liveUrl" placeholder="https://..." value="${escapeAttr(project.liveUrl)}" />
       </div>
@@ -356,10 +409,6 @@ function renderProject(project, index) {
           <label>Solución</label>
           <textarea data-field="solution">${escapeAttr(project.solution)}</textarea>
         </div>
-        <div class="field">
-          <label>Impacto</label>
-          <textarea data-field="impact">${escapeAttr(project.impact)}</textarea>
-        </div>
       </details>
 
       ${imagesHtml}
@@ -368,24 +417,59 @@ function renderProject(project, index) {
 }
 
 function render() {
-  const sorted = [...projects].sort((a, b) => a.order - b.order);
-  byId("app").innerHTML = sorted.map((p) => renderProject(p, projects.indexOf(p))).join("");
+  const sorted = orderedProjects();
+  if (activeProjectIndex === null || !projects[activeProjectIndex]) {
+    activeProjectIndex = projects.indexOf(sorted[0]);
+  }
+  byId("app").innerHTML = `
+    <section class="project-switcher" aria-label="Seleccionar proyecto">
+      <div class="field">
+        <label for="project-picker">Proyecto que quieres editar</label>
+        <select id="project-picker">
+          ${sorted.map((project) => {
+            const index = projects.indexOf(project);
+            return `<option value="${index}"${index === activeProjectIndex ? " selected" : ""}>${String(project.order).padStart(2, "0")} · ${escapeAttr(project.title)}</option>`;
+          }).join("")}
+        </select>
+      </div>
+      <span class="project-count">${projects.length} proyectos</span>
+    </section>
+    ${renderProject(projects[activeProjectIndex], activeProjectIndex)}
+  `;
   attachHandlers();
 }
 
 function attachHandlers() {
+  byId("project-picker").addEventListener("change", (event) => {
+    activeProjectIndex = Number(event.target.value);
+    render();
+  });
+
+  const movePosition = byId("move-position");
+  movePosition.addEventListener("change", () => {
+    const card = movePosition.closest(".card");
+    moveProject(Number(card.dataset.project), Number(movePosition.value));
+    setStatus("Orden actualizado — recuerda Guardar cambios", "ok");
+    render();
+  });
+
   document.querySelectorAll(".card").forEach((card) => {
     const index = Number(card.dataset.project);
     const project = projects[index];
 
     card.querySelectorAll("[data-field]").forEach((input) => {
       if (input.closest(".image-item")) return;
-      input.addEventListener("input", () => {
+      const updateField = () => {
         const field = input.dataset.field;
         if (field === "order") project.order = Number(input.value) || 0;
         else if (field === "stack") project.stack = input.value.split(",").map((s) => s.trim()).filter(Boolean);
-        else project[field] = input.value;
-      });
+        else {
+          project[field] = input.value;
+          if (field === "tone") setStatus("Color actualizado — recuerda Guardar cambios", "ok");
+        }
+      };
+      input.addEventListener("input", updateField);
+      if (input.tagName === "SELECT") input.addEventListener("change", updateField);
     });
 
     card.querySelectorAll("[data-slides] .image-item").forEach((item) => {

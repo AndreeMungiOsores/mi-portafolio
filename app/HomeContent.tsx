@@ -35,9 +35,6 @@ const projects = projectsData as Project[];
 
 const orderedProjects = [...projects].sort((a, b) => a.order - b.order);
 
-/** Rotación de composición por tarjeta: texto-arriba, imagen-arriba, lado a lado. */
-const CARD_LAYOUTS = ["top", "bottom", "split"] as const;
-
 const EUROBRACES_COMPARE: GallerySlide = {
   type: "compare",
   label: "Comparador antes/después",
@@ -83,12 +80,26 @@ export function HomeContent() {
       <SiteNav active="home" />
 
       <header className="hero shell" id="inicio">
+        <div className="hero-sticker-row" aria-hidden="true">
+          <span className="sticker sticker-mint">{t.heroStrip[0]}</span>
+          <span className="sticker sticker-yellow">{t.heroStrip[1]}</span>
+        </div>
         <h1>
-          {t.heroH1Line1}
-          {" "}
-          {t.heroH1Line2}
-          <span>{t.heroH1Span}</span>
+          <span className="hero-name-line">{t.heroH1Line1}</span>
+          <br />
+          <span className="hero-name-line">{t.heroH1Line2}</span>
+          <span className="hero-name-accent">{t.heroH1Span}</span>
         </h1>
+        <div className="hero-floating-pics" aria-hidden="true">
+          <span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/andree-profile.png" alt="" />
+          </span>
+          <span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/andree-cat.png" alt="" />
+          </span>
+        </div>
         <div className="hero-bottom">
           <p>{t.heroBody}</p>
           <a href="#sobre-mi" className="round-link" aria-label={t.heroDownAria}>↓</a>
@@ -163,14 +174,14 @@ export function HomeContent() {
         <div className="project-list">
           {orderedProjects.map((project, index) => {
             const displayNumber = String(index + 1).padStart(2, "0");
-            const layout = CARD_LAYOUTS[index % CARD_LAYOUTS.length];
             const text = projectText(project, lang);
 
             return (
             <article
-              className={`project-card layout-${layout} tone-${project.tone}`}
+              className={`project-card tone-${project.tone}`}
               id={`proyecto-${displayNumber}`}
               key={project.title}
+              data-folder={`✦ ${lang === "en" ? "PROJECT" : "PROYECTO"} ${displayNumber}`}
             >
               <div className="project-heading">
                 <span className="project-number">{displayNumber}</span>
@@ -234,7 +245,7 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section className="capabilities shell">
+      <section id="capacidades" className="capabilities shell">
         <span className="section-index">{t.capsIndex}</span>
         <div className="capability-grid">
           <h2>{t.capsH2}</h2>
