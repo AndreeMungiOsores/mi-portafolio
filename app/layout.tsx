@@ -15,25 +15,40 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andree-software-portfolio.blisscorp-3376.chatgpt.site"),
+  metadataBase: new URL("https://www.mungi.lat"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Andree — Portafolio de software",
     template: "%s · Andree",
   },
   description:
     "Productos digitales, automatización y sistemas construidos para resolver problemas reales.",
+  keywords: ["desarrollo de software", "automatización", "productos digitales", "Perú", "Andree Mungi"],
+  authors: [{ name: "Andree Mungi", url: "https://www.mungi.lat" }],
+  creator: "Andree Mungi",
   openGraph: {
     title: "Andree — Portafolio de software",
     description: "Productos digitales, automatización y sistemas que sí se usan.",
+    url: "/",
+    siteName: "Andree — Portafolio de software",
     type: "website",
     locale: "es_PE",
-    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Portafolio de software de Andree" }],
+    images: [
+      {
+        url: "/social-preview.png",
+        width: 1730,
+        height: 909,
+        alt: "Portafolio de software, automatización y productos digitales de Andree Mungi",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Andree — Portafolio de software",
     description: "Productos digitales, automatización y sistemas que sí se usan.",
-    images: ["/og.png"],
+    images: ["/social-preview.png"],
   },
 };
 
