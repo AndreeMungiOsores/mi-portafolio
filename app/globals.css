@@ -27,6 +27,17 @@
     var(--notebook-paper);
 }
 
+/* Ajuste final de la cabecera de capacidades en móvil. */
+@media (max-width: 760px) {
+  .capabilities {
+    padding-top: 14px !important;
+  }
+
+  .capabilities::before {
+    margin: 0 0 18px !important;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -4905,7 +4916,7 @@ footer.footer#contacto .footer-row {
   .capabilities {
     width: min(100% - 24px, 1550px);
     margin: 54px auto 46px;
-    padding: 38px 18px 44px;
+    padding: 14px 18px 44px;
     box-shadow: 5px 5px 0 var(--ink);
   }
 
@@ -4914,7 +4925,7 @@ footer.footer#contacto .footer-row {
     right: auto;
     top: auto;
     display: inline-flex;
-    margin: 14px 0 0;
+    margin: 0 0 18px;
     transform: rotate(0deg);
   }
 
@@ -5388,15 +5399,15 @@ footer.footer#contacto .footer-row {
   }
 
   /* CRM WhatsApp uses a panoramic capture: let its frame follow the image. */
-  .project-card:nth-child(5) .clean-visual,
-  .project-card:nth-child(7) .clean-visual {
+  .project-card.tone-lime .clean-visual,
+  .project-card.tone-cyan .clean-visual {
     aspect-ratio: 16 / 9 !important;
     min-height: 0 !important;
     overflow: visible !important;
   }
 
-  .project-card:nth-child(5) .clean-visual > img,
-  .project-card:nth-child(7) .clean-visual > img {
+  .project-card.tone-lime .clean-visual > img,
+  .project-card.tone-cyan .clean-visual > img {
     display: block;
     width: 100%;
     height: 100%;

@@ -104,13 +104,7 @@ export default function VideosPage() {
 
       <SiteFooter
         kicker="¿Quieres anuncios en video de alto impacto sin gastar miles en producción?"
-        headline={
-          <>
-            Produzcamos
-            <br />
-            tus videos con IA.
-          </>
-        }
+        headline="Produzcamos tus videos con IA."
         note="Reels, spots y anuncios con Inteligencia Artificial para marcas que necesitan salir a pautar y vender esta semana."
       />
     </main>
