@@ -1,314 +1,12 @@
 [
   {
-    "number": "01",
-    "title": "RouteTrack",
-    "eyebrow": "Field operations · Monitoreo en vivo",
-    "lead": "Un panel de control para asignar rutas diarias y seguir la operación de vendedores en tiempo real.",
-    "tone": "gold",
-    "order": 4,
-    "challenge": "Coordinar la agenda de ejecutivos de campo y conocer, durante la jornada, qué puntos de venta fueron visitados, cuáles siguen pendientes y dónde se encuentra cada vendedor.",
-    "solution": "Diseñé un panel administrativo que permite asignar clínicas y puntos de venta por fecha, visualizar la ruta recorrida sobre el mapa y monitorear geolocalización, movimiento y estado de cada visita.",
-    "impact": "Medicaltech obtiene trazabilidad diaria de su equipo comercial, puede reaccionar ante desvíos y mantiene una lectura clara del avance de cada ruta.",
-    "stack": [
-      "Monitoreo en vivo",
-      "Geolocalización",
-      "Rutas diarias",
-      "Estados PDV",
-      "Usuarios",
-      "Control de acceso"
-    ],
-    "carousel": [
-      {
-        "src": "/projects/medicaltech-live-monitoring.webp",
-        "alt": "Panel Medicaltech con la ruta y geolocalización en vivo de una ejecutiva",
-        "label": "Monitoreo en vivo"
-      },
-      {
-        "src": "/projects/medicaltech-route-assignment.webp",
-        "alt": "Panel Medicaltech para asignar puntos de venta a la ruta diaria de una ejecutiva",
-        "label": "Asignación de rutas"
-      }
-    ],
-    "en": {
-      "eyebrow": "Field operations · Live monitoring",
-      "lead": "A control panel to assign daily routes and track the sales team's operation in real time.",
-      "impact": "Medicaltech gets daily traceability of its sales team, can react to deviations, and keeps a clear read on each route's progress.",
-      "stack": [
-        "Live monitoring",
-        "Geolocation",
-        "Daily routes",
-        "POS status",
-        "Users",
-        "Access control"
-      ]
-    }
-  },
-  {
-    "number": "02",
-    "title": "PlazaDerma",
-    "eyebrow": "SaaS · Geolocalización",
-    "lead": "Un localizador de tiendas personalizable que cualquier marca puede integrar en minutos.",
-    "tone": "violet",
-    "order": 3,
-    "challenge": "Convertir una necesidad técnica —mostrar y administrar múltiples puntos de venta— en una experiencia simple para equipos sin conocimientos de programación.",
-    "solution": "Diseñé una plataforma con autenticación, administración de localizadores, geocodificación, personalización visual y publicación mediante iframe.",
-    "impact": "El negocio puede crear, actualizar e integrar su mapa sin depender de un desarrollador para cada cambio.",
-    "stack": [
-      "React 19",
-      "TypeScript",
-      "Vite",
-      "Supabase",
-      "Leaflet",
-      "Google Maps"
-    ],
-    "carousel": [
-      {
-        "src": "/projects/chatgpt-image-13-sept-2026-05-01-25-p-m-d065b7.webp",
-        "alt": "",
-        "label": "Mapa de clínicas y productos"
-      },
-      {
-        "src": "/projects/captura-de-pantalla-2026-09-13-165647-07a4fb.webp",
-        "alt": "",
-        "label": "Localizador público"
-      }
-    ],
-    "en": {
-      "eyebrow": "SaaS · Geolocation",
-      "lead": "A customizable store locator any brand can integrate in minutes.",
-      "impact": "The business can create, update, and embed its map without depending on a developer for every change.",
-      "stack": [
-        "React 19",
-        "TypeScript",
-        "Vite",
-        "Supabase",
-        "Leaflet",
-        "Google Maps"
-      ]
-    },
-    "liveUrl": "https://bliss-map.vercel.app/l/blissfarma"
-  },
-  {
-    "number": "03",
-    "title": "CRM WhatsApp",
-    "eyebrow": "Automatización · CRM médico",
-    "lead": "Tracking de chats de tus vendedores convertidas en información ordenada, consultable y segura.",
-    "image": "/projects/captura-de-pantalla-2026-09-05-223524-23e139.webp",
-    "imageAlt": "CRM de múltiples números de WhatsApp con selección por vendedor, conversaciones y chat en modo solo lectura",
-    "tone": "lime",
-    "order": 6,
-    "challenge": "Centralizar conversaciones entre ejecutivos y médicos sin alterar WhatsApp ni introducir funciones de envío que comprometieran la seguridad.",
-    "solution": "Construí un flujo de captura pasiva, normalización programada, deduplicación, persistencia local y un dashboard de consulta en modo solo lectura.",
-    "impact": "Unifica el historial comercial y permite revisar contactos, mensajes, archivos y estado de sincronización desde un único lugar.",
-    "stack": [
-      "Node.js",
-      "WhatsApp Web",
-      "SQLite",
-      "Python",
-      "Streamlit",
-      "Pandas"
-    ],
-    "en": {
-      "eyebrow": "Automation · Medical CRM",
-      "lead": "Field conversations turned into organized, searchable, secure information.",
-      "impact": "Unifies the sales history and lets the team review contacts, messages, files, and sync status from a single place.",
-      "stack": [
-        "Node.js",
-        "WhatsApp Web",
-        "SQLite",
-        "Python",
-        "Streamlit",
-        "Pandas"
-      ]
-    }
-  },
-  {
-    "number": "04",
-    "title": "Clickenla.bio",
-    "eyebrow": "Producto digital · Creator economy",
-    "lead": "Una alternativa peruana a Linktree con identidad propia, analítica y control total del perfil.",
-    "tone": "coral",
-    "order": 2,
-    "challenge": "Dar a creadores y negocios una página rápida, personalizable y fácil de administrar desde una sola pantalla.",
-    "solution": "Implementé registro, perfiles públicos, editor drag-and-drop, diseño configurable, vista previa móvil, QR del perfil y métricas por enlace.",
-    "impact": "Cada usuario puede lanzar una presencia digital coherente y medir clics y CTR sin armar un sitio desde cero.",
-    "stack": [
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Supabase",
-      "Drag & Drop",
-      "QR"
-    ],
-    "carousel": [
-      {
-        "src": "/projects/chatgpt-image-13-sept-2026-04-45-45-p-m-17d1de.webp",
-        "alt": "",
-        "label": "Perfiles públicos tipo Linktree"
-      },
-      {
-        "src": "/projects/clickenlabio-editor.webp",
-        "alt": "Editor de enlaces de clickenla.bio con vista previa móvil en tiempo real",
-        "label": "Editor y vista previa"
-      }
-    ],
-    "en": {
-      "eyebrow": "Digital product · Creator economy",
-      "lead": "A Peruvian alternative to Linktree with its own identity, analytics, and full profile control.",
-      "impact": "Every user can launch a coherent digital presence and measure clicks and CTR without building a site from scratch.",
-      "stack": [
-        "Next.js 16",
-        "React 19",
-        "TypeScript",
-        "Supabase",
-        "Drag & Drop",
-        "QR"
-      ]
-    },
-    "liveUrl": "https://www.clickenla.bio/dr-anthony"
-  },
-  {
-    "number": "05",
-    "title": "QR Router",
-    "eyebrow": "Herramienta · Growth operations",
-    "lead": "QR estáticos y dinámicos cuyo destino puede cambiar sin volver a imprimir.",
-    "image": "/projects/qr-router.webp",
-    "imageAlt": "Administrador de QR Router con creador, biblioteca, analítica y vista previa del código QR",
-    "tone": "cyan",
-    "order": 7,
-    "challenge": "Evitar que una campaña impresa quede obsoleta cuando cambia la URL de destino y, además, medir su uso.",
-    "solution": "Desarrollé un administrador de enlaces con slugs persistentes, personalización del QR, historial de destinos, activación y conteo de visitas.",
-    "impact": "Los equipos actualizan campañas en segundos, conservan el mismo código físico y obtienen trazabilidad de escaneos.",
-    "stack": [
-      "Next.js 16",
-      "TypeScript",
-      "Prisma",
-      "PostgreSQL",
-      "Supabase",
-      "QR APIs"
-    ],
-    "en": {
-      "eyebrow": "Tool · Growth operations",
-      "lead": "Static and dynamic QR codes whose destination can change without reprinting.",
-      "impact": "Teams update campaigns in seconds, keep the same physical code, and get scan-level tracking.",
-      "stack": [
-        "Next.js 16",
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Supabase",
-        "QR APIs"
-      ]
-    }
-  },
-  {
-    "number": "06",
-    "title": "Rindegastos",
-    "eyebrow": "Fintech interna · Operaciones",
-    "lead": "Un centro de control para revisar, aprobar, exportar y desembolsar gastos empresariales.",
-    "tone": "orange",
-    "order": 8,
-    "challenge": "Reunir comprobantes, datos de vendedores, estados de aprobación y desembolsos que vivían dispersos en procesos manuales.",
-    "solution": "Construí un panel con filtros avanzados, revisión de vouchers, edición, exportaciones con imágenes, préstamos internos e integración con Dataverse.",
-    "impact": "Reduce trabajo operativo, mejora la trazabilidad y concentra decisiones financieras en una interfaz auditable.",
-    "stack": [
-      "Next.js 14",
-      "React 18",
-      "Dataverse",
-      "Microsoft Graph",
-      "ExcelJS",
-      "JSZip"
-    ],
-    "carousel": [
-      {
-        "src": "/projects/captura-de-pantalla-2026-09-13-161613-a82347.webp",
-        "alt": "Panel general de Rindegastos con indicadores, filtros y listado de comprobantes",
-        "label": "Panel de gastos"
-      },
-      {
-        "src": "/projects/captura-de-pantalla-2026-09-13-161751-5e1062.webp",
-        "alt": "Detalle de un gasto en Rindegastos con información del vendedor y fotografía del comprobante",
-        "label": "Revisión de comprobantes"
-      },
-      {
-        "src": "/projects/captura-de-pantalla-2026-09-13-161638-0e1ef4.webp",
-        "alt": "",
-        "label": "Estadísticas financieras"
-      }
-    ],
-    "en": {
-      "eyebrow": "Internal fintech · Operations",
-      "lead": "A control center to review, approve, export, and disburse business expenses.",
-      "impact": "Cuts operational work, improves traceability, and centralizes financial decisions in an auditable interface.",
-      "stack": [
-        "Next.js 14",
-        "React 18",
-        "Dataverse",
-        "Microsoft Graph",
-        "ExcelJS",
-        "JSZip"
-      ]
-    }
-  },
-  {
-    "number": "07",
-    "title": "GeoMed CRM",
-    "eyebrow": "CRM empresarial · Inteligencia de campo",
-    "lead": "Una base médica geolocalizada con historial comercial y trazabilidad por ejecutivo.",
-    "tone": "red",
-    "order": 5,
-    "challenge": "Centralizar la base de médicos y clínicas, relacionarla con el territorio y conservar el historial de cada interacción del equipo comercial.",
-    "solution": "Desarrollé un CRM con perfiles de clientes, geolocalización masiva, historial de visitas y compras, segmentación y analítica del desempeño de campo.",
-    "impact": "Centraliza médicos y clínicas en un mapa operativo y conecta cada perfil con visitas, compras y desempeño del equipo de campo.",
-    "stack": [
-      "Supabase",
-      "Geolocalización",
-      "Historial de visitas",
-      "Analítica",
-      "Segmentación",
-      "Dashboard"
-    ],
-    "carousel": [
-      {
-        "src": "/projects/medicaltech-crm-map.webp",
-        "alt": "Mapa geolocalizado de médicos y clínicas en Medicaltech CRM",
-        "label": "Mapa de PDV"
-      },
-      {
-        "src": "/projects/medicaltech-crm-clients.webp",
-        "alt": "Base de médicos y clínicas del CRM de Medicaltech",
-        "label": "Base médica"
-      },
-      {
-        "src": "/projects/medicaltech-crm-analytics.webp",
-        "alt": "Dashboard de estadísticas generales de Medicaltech CRM",
-        "label": "Analítica de campo"
-      }
-    ],
-    "en": {
-      "eyebrow": "Enterprise CRM · Field intelligence",
-      "lead": "A geolocated medical database with sales history and per-rep traceability.",
-      "impact": "Centralizes doctors and clinics on an operational map and links each profile to visits, purchases, and field team performance.",
-      "stack": [
-        "Supabase",
-        "Geolocation",
-        "Visit history",
-        "Analytics",
-        "Segmentation",
-        "Dashboard"
-      ]
-    }
-  },
-  {
-    "number": "08",
     "title": "EuroBraces Center",
     "eyebrow": "Clínica dental · Sitio + panel de administración a medida",
     "lead": "Un sitio de conversión para una clínica de ortodoncia, con un panel para que el equipo lo administre sin depender de un desarrollador.",
     "liveUrl": "https://www.eurobraces.com",
-    "tone": "black",
     "order": 1,
     "challenge": "La clínica necesitaba una web profesional y, sobre todo, una forma de que el propio equipo actualizara casos clínicos, reseñas y contenido sin tocar código — y no aparecía en Google buscando su nombre.",
-    "solution": "Construí el sitio completo sin framework (HTML/CSS/JS puro, ~40 KB) y un panel de administración propio conectado a Supabase: gestión de casos clínicos, opiniones, motivos de consulta con comparador antes/después, fotos de pacientes y perfil del especialista. Sumé una capa de SEO técnico completa —datos estructurados, sitemap, Search Console, optimización de imágenes— y conecté la ficha de Google del negocio.",
+    "solution": "Construimos el sitio completo sin framework (HTML/CSS/JS puro, ~40 KB) y un panel de administración propio conectado a Supabase: gestión de casos clínicos, opiniones, motivos de consulta con comparador antes/después, fotos de pacientes y perfil del especialista. Sumamos una capa de SEO técnico completa —datos estructurados, sitemap, Search Console, optimización de imágenes— y conectamos la ficha de Google del negocio.",
     "impact": "",
     "stack": [
       "HTML/CSS/JS",
@@ -361,7 +59,325 @@
         "Structured Data",
         "Custom admin panel",
         "Vercel"
-      ]
-    }
+      ],
+      "challenge": "The clinic needed a professional website and, above all, a way for its own team to update clinical cases, reviews, and content without touching code — and it didn't show up on Google when searching its name.",
+      "solution": "We built the full site without a framework (plain HTML/CSS/JS, ~40 KB) and a custom admin panel connected to Supabase: management of clinical cases, reviews, consultation reasons with a before/after comparison, patient photos, and the specialist's profile. We added a full technical SEO layer —structured data, sitemap, Search Console, image optimization— and connected the business's Google listing."
+    },
+    "slug": "eurobraces-center",
+    "category": "web"
+  },
+  {
+    "title": "Clickenla.bio",
+    "eyebrow": "Producto digital · Creator economy",
+    "lead": "Una alternativa peruana a Linktree con identidad propia, analítica y control total del perfil.",
+    "order": 2,
+    "challenge": "Dar a creadores y negocios una página rápida, personalizable y fácil de administrar desde una sola pantalla.",
+    "solution": "Implementamos registro, perfiles públicos, editor drag-and-drop, diseño configurable, vista previa móvil, QR del perfil y métricas por enlace.",
+    "impact": "Cada usuario puede lanzar una presencia digital coherente y medir clics y CTR sin armar un sitio desde cero.",
+    "stack": [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "Drag & Drop",
+      "QR"
+    ],
+    "carousel": [
+      {
+        "src": "/projects/chatgpt-image-13-sept-2026-04-45-45-p-m-17d1de.webp",
+        "alt": "",
+        "label": "Perfiles públicos tipo Linktree"
+      },
+      {
+        "src": "/projects/clickenlabio-editor.webp",
+        "alt": "Editor de enlaces de clickenla.bio con vista previa móvil en tiempo real",
+        "label": "Editor y vista previa"
+      }
+    ],
+    "en": {
+      "eyebrow": "Digital product · Creator economy",
+      "lead": "A Peruvian alternative to Linktree with its own identity, analytics, and full profile control.",
+      "impact": "Every user can launch a coherent digital presence and measure clicks and CTR without building a site from scratch.",
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Supabase",
+        "Drag & Drop",
+        "QR"
+      ],
+      "challenge": "Giving creators and businesses a fast, customizable page that's easy to manage from a single screen.",
+      "solution": "We implemented sign-up, public profiles, a drag-and-drop editor, configurable design, mobile preview, profile QR, and per-link metrics."
+    },
+    "liveUrl": "https://www.clickenla.bio/dr-anthony",
+    "slug": "clickenla-bio",
+    "category": "producto"
+  },
+  {
+    "title": "PlazaDerma",
+    "eyebrow": "SaaS · Geolocalización",
+    "lead": "Un localizador de tiendas personalizable que cualquier marca puede integrar en minutos.",
+    "order": 3,
+    "challenge": "Convertir una necesidad técnica —mostrar y administrar múltiples puntos de venta— en una experiencia simple para equipos sin conocimientos de programación.",
+    "solution": "Diseñamos una plataforma con autenticación, administración de localizadores, geocodificación, personalización visual y publicación mediante iframe.",
+    "impact": "El negocio puede crear, actualizar e integrar su mapa sin depender de un desarrollador para cada cambio.",
+    "stack": [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Supabase",
+      "Leaflet",
+      "Google Maps"
+    ],
+    "carousel": [
+      {
+        "src": "/projects/chatgpt-image-13-sept-2026-05-01-25-p-m-d065b7.webp",
+        "alt": "",
+        "label": "Mapa de clínicas y productos"
+      },
+      {
+        "src": "/projects/captura-de-pantalla-2026-09-13-165647-07a4fb.webp",
+        "alt": "",
+        "label": "Localizador público"
+      }
+    ],
+    "en": {
+      "eyebrow": "SaaS · Geolocation",
+      "lead": "A customizable store locator any brand can integrate in minutes.",
+      "impact": "The business can create, update, and embed its map without depending on a developer for every change.",
+      "stack": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Supabase",
+        "Leaflet",
+        "Google Maps"
+      ],
+      "challenge": "Turning a technical need —showing and managing multiple points of sale— into a simple experience for teams without programming knowledge.",
+      "solution": "We designed a platform with authentication, locator management, geocoding, visual customization, and publishing through an iframe."
+    },
+    "liveUrl": "https://bliss-map.vercel.app/l/blissfarma",
+    "slug": "plazaderma",
+    "category": "producto"
+  },
+  {
+    "title": "RouteTrack",
+    "eyebrow": "Field operations · Monitoreo en vivo",
+    "lead": "Un panel de control para asignar rutas diarias y seguir la operación de vendedores en tiempo real.",
+    "order": 4,
+    "challenge": "Coordinar la agenda de ejecutivos de campo y conocer, durante la jornada, qué puntos de venta fueron visitados, cuáles siguen pendientes y dónde se encuentra cada vendedor.",
+    "solution": "Diseñamos un panel administrativo que permite asignar clínicas y puntos de venta por fecha, visualizar la ruta recorrida sobre el mapa y monitorear geolocalización, movimiento y estado de cada visita.",
+    "impact": "Medicaltech obtiene trazabilidad diaria de su equipo comercial, puede reaccionar ante desvíos y mantiene una lectura clara del avance de cada ruta.",
+    "stack": [
+      "Monitoreo en vivo",
+      "Geolocalización",
+      "Rutas diarias",
+      "Estados PDV",
+      "Usuarios",
+      "Control de acceso"
+    ],
+    "carousel": [
+      {
+        "src": "/projects/medicaltech-live-monitoring.webp",
+        "alt": "Panel Medicaltech con la ruta y geolocalización en vivo de una ejecutiva",
+        "label": "Monitoreo en vivo"
+      },
+      {
+        "src": "/projects/medicaltech-route-assignment.webp",
+        "alt": "Panel Medicaltech para asignar puntos de venta a la ruta diaria de una ejecutiva",
+        "label": "Asignación de rutas"
+      }
+    ],
+    "en": {
+      "eyebrow": "Field operations · Live monitoring",
+      "lead": "A control panel to assign daily routes and track the sales team's operation in real time.",
+      "impact": "Medicaltech gets daily traceability of its sales team, can react to deviations, and keeps a clear read on each route's progress.",
+      "stack": [
+        "Live monitoring",
+        "Geolocation",
+        "Daily routes",
+        "POS status",
+        "Users",
+        "Access control"
+      ],
+      "challenge": "Coordinating field executives' schedules and knowing, during the day, which points of sale were visited, which are pending, and where each salesperson is.",
+      "solution": "We designed an admin panel to assign clinics and points of sale by date, view the route traveled on the map, and monitor geolocation, movement, and the status of each visit."
+    },
+    "slug": "routetrack",
+    "category": "operaciones"
+  },
+  {
+    "title": "GeoMed CRM",
+    "eyebrow": "CRM empresarial · Inteligencia de campo",
+    "lead": "Una base médica geolocalizada con historial comercial y trazabilidad por ejecutivo.",
+    "order": 5,
+    "challenge": "Centralizar la base de médicos y clínicas, relacionarla con el territorio y conservar el historial de cada interacción del equipo comercial.",
+    "solution": "Desarrollamos un CRM con perfiles de clientes, geolocalización masiva, historial de visitas y compras, segmentación y analítica del desempeño de campo.",
+    "impact": "Centraliza médicos y clínicas en un mapa operativo y conecta cada perfil con visitas, compras y desempeño del equipo de campo.",
+    "stack": [
+      "Supabase",
+      "Geolocalización",
+      "Historial de visitas",
+      "Analítica",
+      "Segmentación",
+      "Dashboard"
+    ],
+    "carousel": [
+      {
+        "src": "/projects/medicaltech-crm-map.webp",
+        "alt": "Mapa geolocalizado de médicos y clínicas en Medicaltech CRM",
+        "label": "Mapa de PDV"
+      },
+      {
+        "src": "/projects/medicaltech-crm-clients.webp",
+        "alt": "Base de médicos y clínicas del CRM de Medicaltech",
+        "label": "Base médica"
+      },
+      {
+        "src": "/projects/medicaltech-crm-analytics.webp",
+        "alt": "Dashboard de estadísticas generales de Medicaltech CRM",
+        "label": "Analítica de campo"
+      }
+    ],
+    "en": {
+      "eyebrow": "Enterprise CRM · Field intelligence",
+      "lead": "A geolocated medical database with sales history and per-rep traceability.",
+      "impact": "Centralizes doctors and clinics on an operational map and links each profile to visits, purchases, and field team performance.",
+      "stack": [
+        "Supabase",
+        "Geolocation",
+        "Visit history",
+        "Analytics",
+        "Segmentation",
+        "Dashboard"
+      ],
+      "challenge": "Centralizing the database of doctors and clinics, tying it to the territory, and keeping the history of every sales team interaction.",
+      "solution": "We developed a CRM with client profiles, bulk geolocation, visit and purchase history, segmentation, and field performance analytics."
+    },
+    "slug": "geomed-crm",
+    "category": "crm"
+  },
+  {
+    "title": "CRM WhatsApp",
+    "eyebrow": "Automatización · CRM médico",
+    "lead": "Tracking de chats de tus vendedores convertidas en información ordenada, consultable y segura.",
+    "image": "/projects/captura-de-pantalla-2026-09-05-223524-23e139.webp",
+    "imageAlt": "CRM de múltiples números de WhatsApp con selección por vendedor, conversaciones y chat en modo solo lectura",
+    "order": 6,
+    "challenge": "Centralizar conversaciones entre ejecutivos y médicos sin alterar WhatsApp ni introducir funciones de envío que comprometieran la seguridad.",
+    "solution": "Construimos un flujo de captura pasiva, normalización programada, deduplicación, persistencia local y un dashboard de consulta en modo solo lectura.",
+    "impact": "Unifica el historial comercial y permite revisar contactos, mensajes, archivos y estado de sincronización desde un único lugar.",
+    "stack": [
+      "Node.js",
+      "WhatsApp Web",
+      "SQLite",
+      "Python",
+      "Streamlit",
+      "Pandas"
+    ],
+    "en": {
+      "eyebrow": "Automation · Medical CRM",
+      "lead": "Field conversations turned into organized, searchable, secure information.",
+      "impact": "Unifies the sales history and lets the team review contacts, messages, files, and sync status from a single place.",
+      "stack": [
+        "Node.js",
+        "WhatsApp Web",
+        "SQLite",
+        "Python",
+        "Streamlit",
+        "Pandas"
+      ],
+      "challenge": "Centralizing conversations between executives and doctors without altering WhatsApp or adding sending features that would compromise security.",
+      "solution": "We built a passive capture flow, scheduled normalization, deduplication, local persistence, and a read-only query dashboard."
+    },
+    "slug": "crm-whatsapp",
+    "category": "automatizacion"
+  },
+  {
+    "title": "QR Router",
+    "eyebrow": "Herramienta · Growth operations",
+    "lead": "QR estáticos y dinámicos cuyo destino puede cambiar sin volver a imprimir.",
+    "image": "/projects/qr-router.webp",
+    "imageAlt": "Administrador de QR Router con creador, biblioteca, analítica y vista previa del código QR",
+    "order": 7,
+    "challenge": "Evitar que una campaña impresa quede obsoleta cuando cambia la URL de destino y, además, medir su uso.",
+    "solution": "Desarrollamos un administrador de enlaces con slugs persistentes, personalización del QR, historial de destinos, activación y conteo de visitas.",
+    "impact": "Los equipos actualizan campañas en segundos, conservan el mismo código físico y obtienen trazabilidad de escaneos.",
+    "stack": [
+      "Next.js 16",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Supabase",
+      "QR APIs"
+    ],
+    "en": {
+      "eyebrow": "Tool · Growth operations",
+      "lead": "Static and dynamic QR codes whose destination can change without reprinting.",
+      "impact": "Teams update campaigns in seconds, keep the same physical code, and get scan-level tracking.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Supabase",
+        "QR APIs"
+      ],
+      "challenge": "Keeping a printed campaign from going stale when the destination URL changes, while also measuring its use.",
+      "solution": "We developed a link manager with persistent slugs, QR customization, destination history, activation, and visit counts."
+    },
+    "slug": "qr-router",
+    "category": "producto"
+  },
+  {
+    "title": "Rindegastos",
+    "eyebrow": "Fintech interna · Operaciones",
+    "lead": "Un centro de control para revisar, aprobar, exportar y desembolsar gastos empresariales.",
+    "order": 8,
+    "challenge": "Reunir comprobantes, datos de vendedores, estados de aprobación y desembolsos que vivían dispersos en procesos manuales.",
+    "solution": "Construimos un panel con filtros avanzados, revisión de vouchers, edición, exportaciones con imágenes, préstamos internos e integración con Dataverse.",
+    "impact": "Reduce trabajo operativo, mejora la trazabilidad y concentra decisiones financieras en una interfaz auditable.",
+    "stack": [
+      "Next.js 14",
+      "React 18",
+      "Dataverse",
+      "Microsoft Graph",
+      "ExcelJS",
+      "JSZip"
+    ],
+    "carousel": [
+      {
+        "src": "/projects/captura-de-pantalla-2026-09-13-161613-a82347.webp",
+        "alt": "Panel general de Rindegastos con indicadores, filtros y listado de comprobantes",
+        "label": "Panel de gastos"
+      },
+      {
+        "src": "/projects/captura-de-pantalla-2026-09-13-161751-5e1062.webp",
+        "alt": "Detalle de un gasto en Rindegastos con información del vendedor y fotografía del comprobante",
+        "label": "Revisión de comprobantes"
+      },
+      {
+        "src": "/projects/captura-de-pantalla-2026-09-13-161638-0e1ef4.webp",
+        "alt": "",
+        "label": "Estadísticas financieras"
+      }
+    ],
+    "en": {
+      "eyebrow": "Internal fintech · Operations",
+      "lead": "A control center to review, approve, export, and disburse business expenses.",
+      "impact": "Cuts operational work, improves traceability, and centralizes financial decisions in an auditable interface.",
+      "stack": [
+        "Next.js 14",
+        "React 18",
+        "Dataverse",
+        "Microsoft Graph",
+        "ExcelJS",
+        "JSZip"
+      ],
+      "challenge": "Bringing together receipts, salesperson data, approval statuses, and disbursements that lived scattered across manual processes.",
+      "solution": "We built a panel with advanced filters, voucher review, editing, exports with images, internal loans, and Dataverse integration."
+    },
+    "slug": "rindegastos",
+    "category": "operaciones"
   }
 ]

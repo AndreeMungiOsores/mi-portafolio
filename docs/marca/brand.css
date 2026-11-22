@@ -1,0 +1,59 @@
+/* Mungi lat — tokens y componentes de marca. Fuente de verdad: MANUAL.md */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@400;800&display=block");
+:root{
+  /* Oscuros */
+  --noche:#060D1C; --noche-2:#081631; --panel:#0E1E40;
+  /* Azules */
+  --azul:#3D7BFF;      /* acento sobre oscuro */
+  --cobalto:#1F4FD8;   /* acento sobre claro */
+  --cielo:#8FB2FF; --cielo-2:#6FA0FF;
+  /* Claros */
+  --hielo:#E8F0FF; --fondo-claro:#F3F7FF; --borde-claro:#D5E0F5; --blanco:#FFFFFF;
+  /* Texto */
+  --tinta:#0B1630; --texto-sec-oscuro:#C5D3EE; --texto-sec-claro:#5B6B8C;
+  /* Acentos puntuales */
+  --ambar:#FFB547; --wa:#25D366;
+  --linea:rgba(143,178,255,.22);
+  /* Tipografía */
+  --f-ui:'Instrument Sans',sans-serif; --f-mono:'IBM Plex Mono',monospace; --f-logo:'Libre Franklin',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+.flyer{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:var(--f-ui)}
+.flyer .wrap{position:absolute;inset:0;padding:68px 72px}
+.flyer::before{content:"";position:absolute;inset:0;background-size:72px 72px;opacity:.35;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,transparent 75%)}
+/* Modo oscuro */
+.dark{color:#fff;background:radial-gradient(900px 520px at 85% 62%,rgba(61,123,255,.30),transparent 65%),radial-gradient(700px 400px at 0% 0%,rgba(61,123,255,.14),transparent 60%),linear-gradient(180deg,var(--noche) 0%,var(--noche-2) 100%)}
+.dark::before{background-image:linear-gradient(var(--linea) 1px,transparent 1px),linear-gradient(90deg,var(--linea) 1px,transparent 1px)}
+/* Modo claro (frío, sin crema) */
+.light{color:var(--tinta);background:radial-gradient(800px 480px at 90% 70%,rgba(31,79,216,.10),transparent 65%),radial-gradient(600px 360px at 0% 0%,rgba(61,123,255,.10),transparent 60%),var(--fondo-claro)}
+.light::before{background-image:linear-gradient(rgba(31,79,216,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(31,79,216,.10) 1px,transparent 1px);opacity:.6}
+/* Logo */
+.logo{display:flex;align-items:center;gap:14px;font:800 34px var(--f-logo);letter-spacing:-.035em}
+.logo span{font-weight:400}
+.dark .logo span{color:var(--cielo)} .light .logo span{color:var(--cobalto)}
+.top{display:flex;justify-content:space-between;align-items:center}
+.tag{font:500 15px var(--f-mono);letter-spacing:.16em;padding:9px 14px;border:1px solid}
+.dark .tag{color:var(--cielo);border-color:var(--linea);background:rgba(61,123,255,.08)}
+.light .tag{color:var(--cobalto);border-color:var(--borde-claro);background:#fff}
+h1{font:700 72px/1.06 var(--f-ui);letter-spacing:-.035em;margin-top:70px}
+.dark h1 em{font-style:normal;color:var(--cielo-2)} .light h1 em{font-style:normal;color:var(--cobalto)}
+.lead{font:400 28px/1.45 var(--f-ui);margin-top:28px;max-width:780px}
+.dark .lead{color:var(--texto-sec-oscuro)} .light .lead{color:#33456B}
+.lead b{font-weight:600} .dark .lead b{color:#fff}
+.label{font:500 14px var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.dark .label{color:var(--cielo)} .light .label{color:var(--texto-sec-claro)}
+/* Tarjeta */
+.card{border-radius:16px;border:1px solid}
+.dark .card{border-color:var(--linea);background:rgba(255,255,255,.04)}
+.light .card{border-color:var(--borde-claro);background:#fff;box-shadow:0 20px 50px rgba(31,79,216,.10)}
+/* Barra CTA */
+.cta{position:absolute;left:72px;right:72px;bottom:64px;display:flex;align-items:center;justify-content:space-between;border-radius:16px;padding:22px 30px}
+.dark .cta{border:1px solid rgba(143,178,255,.5);background:rgba(61,123,255,.12)}
+.light .cta{background:var(--noche);color:#fff}
+.cta .l{display:flex;align-items:center;gap:22px}
+.wa{width:62px;height:62px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;flex:none}
+.cta small{display:block;font:500 14px var(--f-mono);letter-spacing:.14em;color:var(--cielo);text-transform:uppercase;margin-bottom:6px}
+.cta strong{font:700 44px var(--f-ui);letter-spacing:-.02em}
+.cta .r{font:500 22px var(--f-mono);color:var(--cielo)}
+.avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid var(--linea)}

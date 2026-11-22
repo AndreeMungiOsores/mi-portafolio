@@ -8,7 +8,7 @@
  *   public/videos/<slug>.mp4   H.264 optimizado para streaming progresivo
  *   public/videos/<slug>.jpg   poster extraído del primer segundo
  *
- * y reescribe app/servicios/videos/manifest.json con las dimensiones reales.
+ * y reescribe data/manifest.json con las dimensiones reales.
  * El texto de cada pieza NO se toca aquí: vive en reels.ts.
  */
 import { spawn } from "node:child_process";
@@ -20,7 +20,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const SOURCE_DIR = process.argv[2] ?? "C:/Users/Andree/Desktop/marketing/videos";
 const OUT_DIR = join(ROOT, "public/videos");
-const MANIFEST = join(ROOT, "app/servicios/videos/manifest.json");
+const MANIFEST = join(ROOT, "data/manifest.json");
 
 /** Alto objetivo para verticales y ancho objetivo para horizontales. */
 const VERTICAL_HEIGHT = 1280;

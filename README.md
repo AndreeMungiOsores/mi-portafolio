@@ -1,96 +1,38 @@
-# Portafolio de Andree Mungi
+# Sitio mungi.lat
 
-Sitio personal en español: portafolio de software más dos páginas de servicio
-(videos publicitarios y páginas web). Next.js 16 con App Router, exportado como
-sitio **100% estático** — no hay servidor ni base de datos.
+Web de la marca **Mungi lat** (reemplaza al portafolio personal de Andree Mungi). Next.js 16 con export estático. El sitio anterior sigue intacto en `..\Portafolio Andree - respaldo 2026-11-22` y en `C:\Users\Andree\Desktop\PORTAFOLIO`.
 
-## Requisitos
+## Estado (2026-11-22)
 
-- Node.js `>=22.13.0`
-- [ffmpeg](https://ffmpeg.org) solo si vas a regenerar los videos
-
-## Empezar
-
-```bash
-npm install
-npm run dev
-```
-
-Abre http://localhost:3000.
+- [x] Respaldo completo del sitio anterior.
+- [x] Vistas aprobadas (`docs/vistas/png/`).
+- [x] Sitio construido: inicio, servicios (+ páginas web y video con IA), casos (índice + 8 páginas), nosotros y contacto, 404, sitemap, robots, ES/EN, responsive.
+- [x] `npm test` (build + 9 pruebas) y `npm run lint` en verde.
+- [ ] Publicación en `mungi.lat` (pendiente: decidir cómo apuntar el dominio de Vercel a este proyecto).
+- [ ] Decisiones abiertas: ver `PRODUCT.md`.
 
 ## Comandos
 
-| Comando | Qué hace |
-| --- | --- |
-| `npm run dev` | Servidor de desarrollo con recarga en caliente |
-| `npm run build` | Exporta el sitio estático a `out/` |
-| `npm run preview` | Sirve `out/` en http://localhost:4321 (con soporte de rangos para video) |
-| `npm run videos` | Convierte los videos originales a versiones web |
-| `npm test` | Hace el build y verifica el HTML exportado |
-| `npm run lint` | ESLint |
+| | |
+|---|---|
+| `npm run dev` | Desarrollo en http://localhost:3000 |
+| `npm run build` | Genera `out/` (sitio estático) |
+| `npm test` | Build + pruebas del sitio exportado |
+| `npm run preview` | Sirve `out/` como un hosting estático |
+| `npm run videos` | Convierte videos originales a `public/videos` y regenera `data/manifest.json` |
 
-## Estructura
+## Dónde editar
 
-```
-app/
-  page.tsx                    portada: hero, sobre mí, 8 proyectos, enfoque
-  ProjectCarousel.tsx         carrusel de capturas de cada proyecto
-  SiteNav.tsx / SiteFooter.tsx   navegación y contacto compartidos
-  globals.css                 todos los estilos (CSS a mano, sin utilidades)
-  servicios/
-    videos/
-      page.tsx                landing del servicio de video
-      ReelGrid.tsx            galería con reproductor a pantalla completa
-      reels.ts                ✏️ textos de cada video
-      manifest.json           generado por `npm run videos` — no editar a mano
-    web/page.tsx              landing del servicio de páginas web
-public/videos/                videos comprimidos + posters
-scripts/                      utilidades de build (video, servidor de preview)
-tests/                        verificación del sitio exportado
-```
+| Qué | Archivo |
+|---|---|
+| Todos los textos (ES/EN), WhatsApp, redes, paquetes, FAQ | `app/copy.ts` |
+| Los 8 casos (textos, stack, capturas) | `data/projects.json` |
+| Títulos de los videos | `data/reels.ts` |
+| Estilos y colores | `app/globals.css` |
+| Poses del Cubo | `public/cubo/*.webp` (originales en `docs/marca/assets/`) |
 
-Las tres rutas son estáticas: `/`, `/servicios/videos` y `/servicios/web`.
+## Contenido que no se migró
 
-## Editar el contenido
+Las descripciones personales del portafolio (foto, gato, UTEC, «2+ años», «Sobre mí»). El panel de administración local (`npm run admin`) del sitio anterior tampoco se migró; los casos se editan en `data/projects.json`.
 
-- **Proyectos del portafolio**: el array `projects` al inicio de `app/page.tsx`.
-  El orden que se muestra lo define `orderedProjects` justo debajo.
-- **Textos de cada video**: el objeto `COPY` en `app/servicios/videos/reels.ts`.
-  Las dimensiones y el peso salen del manifiesto, no se tocan.
-- **Paquetes y precios**: las constantes `PAQUETES` al inicio de
-  `app/servicios/videos/page.tsx` y `app/servicios/web/page.tsx`. El campo
-  `price` es texto libre.
-- **Preguntas frecuentes**: la constante `FAQ` en `app/servicios/web/page.tsx`.
-- **WhatsApp**: la constante `WHATSAPP` en `app/SiteFooter.tsx`.
-
-## Agregar o actualizar videos
-
-Los originales sin comprimir **no viven en el repositorio**: pesan cientos de
-megas. El flujo es:
-
-```bash
-npm run videos
-```
-
-Por defecto lee `C:/Users/Andree/Desktop/marketing/videos`. Para otra carpeta:
-
-```bash
-npm run videos -- "D:/ruta/a/mis/videos"
-```
-
-El script convierte cada archivo a H.264 de 720p (~3 MB por pieza frente a los
-~25 MB del original), extrae un poster, los deja en `public/videos/` y reescribe
-`app/servicios/videos/manifest.json`. Si aparece un video nuevo te avisa que le
-falta texto en `reels.ts`.
-
-## Despliegue
-
-El build genera HTML plano en `out/`, así que sirve cualquier hosting estático.
-Hay dos caminos ya configurados:
-
-- **Vercel**: detecta Next.js y publica solo (`vercel.json`).
-- **GitHub Pages**: `.github/workflows/nextjs.yml` construye y publica en cada
-  push a `main`.
-
-Ten en cuenta que `public/videos/` pesa unos 40 MB; si el hosting cobra por
-ancho de banda, conviene moverlos a un CDN y apuntar `src` en el manifiesto.
+`docs/vistas/` conserva las vistas de diseño y los scripts que las generan (`build-vistas.py`, `render-vistas.py`, desde PowerShell).

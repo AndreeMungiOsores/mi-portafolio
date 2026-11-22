@@ -1,47 +1,42 @@
 # Product
 
-<!-- impeccable:product-schema 1 -->
-
 ## Platform
 
 web
 
 ## Users
 
-Dueños y equipos de decisión de negocios que necesitan software a medida, automatización de procesos o producción de video publicitario con IA. Sin foco geográfico único: tanto PyMEs locales en Perú como clientes remotos/internacionales. Llegan al portafolio evaluando si contratar a Andree para un proyecto concreto.
+Dueños y equipos de decisión de negocios que necesitan software a medida, automatización de procesos, una página web o video publicitario con IA. PyMEs locales en Perú y clientes remotos. Llegan evaluando si contratar a Mungi lat para un proyecto concreto.
 
 ## Product Purpose
 
-Portafolio personal de Andree Mungi, desarrollador full-stack y automatizador. Existe para convertir visitantes en clientes que lo contraten para proyectos de software a medida, automatización de procesos, y producción de video con IA. Éxito = el visitante inicia contacto (WhatsApp) para conversar sobre un proyecto.
+Sitio web de la empresa **Mungi lat** (reemplaza al portafolio personal de Andree Mungi). Existe para convertir visitantes en clientes: éxito = el visitante escribe por WhatsApp (961 556 197).
 
 ## Positioning
 
-Ejecuta de punta a punta —producto, interfaz, arquitectura, automatización y producción de video con IA— sin subcontratar ni fragmentar el trabajo entre varias personas o agencias. Velocidad y ejecución completa por una sola persona es el diferenciador frente a un freelancer puntual o una agencia con intermediarios.
-
-## Operating Context
-
-Se navega principalmente en visitas cortas de evaluación: un potencial cliente revisa casos de trabajo previo antes de decidir si contacta. El canal de contacto principal es WhatsApp. El sitio es estático (Next.js, `output: "export"`, desplegado en Vercel) y expone, además del portafolio de software, una oferta de producción de reels/anuncios con IA (`/servicios/videos`).
+Software, automatización, web y video en un solo lugar, de punta a punta y a la medida del negocio, sin plantillas y sin fragmentar el trabajo entre varios proveedores.
 
 ## Capabilities and Constraints
 
-- 8 casos de estudio reales, cada uno con capturas, stack técnico y resultados: Medicaltech Field, EuroBraces Center, Medicaltech CRM, BlissMap, CRM WhatsApp, clickenla.bio, QR Router, Rindegastos.
-- Sitio 100% estático (`output: "export"`); cualquier funcionalidad dinámica (backend, base de datos, formularios con envío server-side) requiere reconsiderar esa restricción de arquitectura antes de proponerla.
-- Panel de administración local (`npm run admin`, `scripts/admin-server.mjs`) permite editar textos e imágenes de los 8 proyectos sin tocar código. Corre solo en `127.0.0.1`, sin login — no está pensado para exponerse a internet.
-- Datos de los proyectos viven en `data/projects.json` (no hardcodeados en componentes React).
-- Servicio adicional reciente: producción de video publicitario con IA, con su propia página (`/servicios/videos`) y pipeline de conversión de video (`scripts/build-videos.mjs`, ffmpeg).
+- 8 casos de estudio reales (`data/projects.json`) con capturas, stack y resultados confirmados por el usuario. Usar tal cual; nunca inventar cifras, resultados ni testimonios. No hay testimonios.
+- Sitio 100 % estático (`output: "export"`, Vercel). Cualquier funcionalidad dinámica requiere reconsiderar esa restricción.
+- Bilingüe ES/EN con el texto en `app/copy.ts` (y `data/projects.json` para los casos).
+- Video con IA: piezas en `public/videos`, textos en `data/reels.ts`, conversión con `npm run videos`.
 
 ## Brand Commitments
 
-Nombre: Andree Mungi. Egresado de Ingeniería Mecatrónica de UTEC, 2+ años de experiencia en desarrollo de software, con base en Perú. Toque personal: tiene un gato, aparece en la sección "Sobre mí". Identidad visual ya establecida (no a reinventar sin motivo): estética editorial oscura y audaz — tipografías Syne (display) + Archivo (cuerpo), un color de acento distinto por proyecto, textura de grano sutil, secciones a pantalla completa con scroll-snap.
+Identidad de **Mungi lat** (`docs/marca/MANUAL.md`): base clara con cuadrícula técnica, cobalto `#1F4FD8`, Instrument Sans + IBM Plex Mono, logo en Libre Franklin. El Cubo (mascota) aparece en inicio, nosotros, proceso y llamados a la acción, usando las poses de `public/cubo/` sin redibujarlo. Sin bloques oscuros; el llamado a la acción es una banda de cobalto sólido. Voz: «nosotros», sin mencionar tamaño de equipo ni datos personales de ninguna persona.
 
-## Evidence on Hand
+## Open Decisions (pendientes de confirmar)
 
-Las capturas, el stack técnico y las cifras de impacto de los 8 casos de estudio son reales y fueron confirmadas explícitamente por el usuario como verificables tal cual están — usar sin alterar, nunca fabricar cifras, resultados o casos adicionales. Hay un enlace en vivo real (eurobraces.com). El sitio no muestra testimonios de clientes actualmente: no inventar ninguno.
+- Cifras migradas tal cual: «-70 % de costo», «48-72 h» (video) y «8 casos reales».
+- Paquetes de páginas web con precio «A convenir».
+- Categorías de «Casos» (Web, Producto, CRM, Operaciones, Automatización), deducidas de los textos.
+- El caso EuroBraces tiene un resultado solo en inglés («indexed within hours…»); en español está vacío.
 
 ## Product Principles
 
-1. Toda afirmación de resultado debe ser real y verificable — nunca inventar métricas, testimonios o casos.
-2. El trabajo mostrado debe transmitir ejecución rápida y completa de punta a punta, sin fragmentación entre varias personas.
-3. La propuesta debe funcionar igual de bien para una PyME local peruana que para un cliente remoto/internacional — sin asumir un único contexto cultural o idioma de negocio.
-4. Las piezas gráficas (capturas, video) son el argumento de venta principal; el texto es de apoyo, no el protagonista.
-5. La estética editorial oscura y audaz ya establecida es la identidad de marca — extenderla, no reemplazarla sin que el usuario lo pida explícitamente.
+1. Toda afirmación de resultado debe ser real y verificable.
+2. El trabajo mostrado (capturas, video) es el argumento de venta; el texto apoya.
+3. Funciona igual para una PyME peruana que para un cliente remoto.
+4. Una sola idea y un solo llamado a la acción por pantalla.

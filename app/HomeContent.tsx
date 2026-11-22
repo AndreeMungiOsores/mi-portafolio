@@ -1,263 +1,170 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
-import { Fragment } from "react";
 import Link from "next/link";
-import projectsData from "../data/projects.json";
-import { ProjectGallery, type GallerySlide } from "./ProjectGallery";
-import { TiltVisual } from "./TiltVisual";
-import { SiteNav } from "./SiteNav";
-import { SiteFooter } from "./SiteFooter";
 import { useLanguage } from "./i18n";
+import { cases } from "./lib/cases";
+import { CaseCard } from "./components/CaseCard";
+import { CtaBand } from "./components/CtaBand";
+import { ButtonLink, Cubo, SectionHead, WaButton, CheckList } from "./components/ui";
 
-type CarouselImage = { src: string; alt: string; label: string };
+const SERVICE_ICONS = [
+  <path key="a" d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14" />,
+  <g key="b"><circle cx="5" cy="6" r="2.2" /><circle cx="19" cy="6" r="2.2" /><circle cx="12" cy="18" r="2.2" /><path d="M7 6h10M6 8l5 8M18 8l-5 8" /></g>,
+  <g key="c"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M7 6.5h.01M10 6.5h.01" /></g>,
+  <g key="d"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="M10 9.5v5l4.5-2.5z" /></g>,
+];
+const SERVICE_LINKS = ["/servicios#software", "/servicios#automatizacion", "/servicios/web", "/servicios/videos"];
 
-type ProjectTranslation = { eyebrow: string; lead: string; impact: string; stack: string[] };
-
-type Project = {
-  number: string;
-  title: string;
-  eyebrow: string;
-  lead: string;
-  tone: string;
-  order: number;
-  challenge: string;
-  solution: string;
-  impact: string;
-  stack: string[];
-  liveUrl?: string;
-  image?: string;
-  imageAlt?: string;
-  carousel?: CarouselImage[];
-  en?: ProjectTranslation;
-};
-
-const projects = projectsData as Project[];
-
-const orderedProjects = [...projects].sort((a, b) => a.order - b.order);
-
-const EUROBRACES_COMPARE: GallerySlide = {
-  type: "compare",
-  label: "Comparador antes/después",
-  before: { src: "/projects/compare/eurobraces-apinados-antes.webp", alt: "Dientes apiñados antes del tratamiento" },
-  after: { src: "/projects/compare/eurobraces-apinados-despues.webp", alt: "Sonrisa alineada después del tratamiento" },
-};
-
-function ProjectVisual({ project }: { project: Project }) {
-  if (project.carousel) {
-    const slides: GallerySlide[] = project.carousel.map((slide) =>
-      project.title === "EuroBraces Center" && slide.label === "Comparador antes/después"
-        ? EUROBRACES_COMPARE
-        : { type: "image", src: slide.src, alt: slide.alt, label: slide.label },
-    );
-
-    return <ProjectGallery slides={slides} title={project.title} />;
-  }
-
-  if (project.image) {
-    return (
-      <TiltVisual
-        className={`project-visual clean-visual ${project.tone}`}
-        src={project.image}
-        alt={project.imageAlt ?? ""}
-        tilt={project.title !== "CRM WhatsApp" && project.title !== "QR Router"}
-      />
-    );
-  }
-
-  return null;
+export function ServiceIcon({ index }: { index: number }) {
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1F4FD8" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {SERVICE_ICONS[index]}
+    </svg>
+  );
 }
 
-function projectText(project: Project, lang: string): ProjectTranslation {
-  if (lang === "en" && project.en) return project.en;
-  return { eyebrow: project.eyebrow, lead: project.lead, impact: project.impact, stack: project.stack };
-}
+const FEATURED = ["eurobraces-center", "routetrack", "qr-router"];
+const REELS = ["reel-0108", "reel-0118", "reel-0204"];
 
 export function HomeContent() {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
+  const h = t.home;
+  const featured = FEATURED.map((slug) => cases.find((c) => c.slug === slug)!).filter(Boolean);
 
   return (
-    <main className="snap-page">
-      <SiteNav active="home" />
-
-      <header className="hero shell" id="inicio">
-        <div className="hero-sticker-row" aria-hidden="true">
-          <span className="sticker sticker-mint">{t.heroStrip[0]}</span>
-          <span className="sticker sticker-yellow">{t.heroStrip[1]}</span>
-        </div>
-        <h1>
-          <span className="hero-name-line">{t.heroH1Line1}</span>
-          <br />
-          <span className="hero-name-line">{t.heroH1Line2}</span>
-          <span className="hero-name-accent">{t.heroH1Span}</span>
-        </h1>
-        <div className="hero-floating-pics" aria-hidden="true">
-          <span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/andree-profile.png" alt="" />
-          </span>
-          <span>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/andree-cat.png" alt="" />
-          </span>
-        </div>
-        <div className="hero-bottom">
-          <p>{t.heroBody}</p>
-          <a href="#sobre-mi" className="round-link" aria-label={t.heroDownAria}>↓</a>
-        </div>
-        <div className="hero-strip" aria-label={t.aboutFactsAria}>
-          {t.heroStrip.map((item, i) => (
-            <Fragment key={item}>
-              <span>{item}</span>
-              {i < t.heroStrip.length - 1 && <i />}
-            </Fragment>
-          ))}
-        </div>
-      </header>
-
-      <section className="about shell" id="sobre-mi">
-        <div className="about-visual">
-          <div className="portrait-bubble">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/andree-profile.png" alt="Retrato de Andree Mungi" />
-          </div>
-          <div className="cat-bubble">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/andree-cat.png" alt="El gato de Andree" />
-          </div>
-          <div className="about-orbit" aria-hidden="true" />
-          <span className="about-visual-label">{t.aboutVisualLabel}</span>
-          <span className="cat-label">{t.catLabel}</span>
-        </div>
-        <div className="about-content">
-          <span className="section-index">{t.aboutIndex}</span>
-          <p className="about-kicker">{t.aboutKicker}</p>
-          <h2>
-            {t.aboutH2Pre}
-            <strong>{t.aboutH2Strong1}</strong>
-            {t.aboutH2Mid}
-            <strong>{t.aboutH2Strong2}</strong>
-            {t.aboutH2Post}
-          </h2>
-          <p className="about-copy">
-            {t.aboutCopyPre}
-            <strong>{t.aboutCopyStrong1}</strong>
-            {t.aboutCopyMid}
-            <strong>{t.aboutCopyStrong2}</strong>
-            {t.aboutCopyPost}
-            <strong>{t.aboutCopyStrong3}</strong>
-            {t.aboutCopyEnd}
-          </p>
-          <p className="about-personal">
-            {t.aboutPersonalPre}
-            <strong>{t.aboutPersonalStrong}</strong>
-            {t.aboutPersonalPost}
-          </p>
-          <div className="about-facts" aria-label={t.aboutFactsAria}>
-            {t.aboutFacts.map((fact) => (
-              <span key={fact}>{fact}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="projects shell" id="proyectos">
-        <div className="section-intro">
-          <span className="section-index">{t.projectsIndex}</span>
-          <h2>
-            {t.projectsH2[0]}
-            <br />
-            {t.projectsH2[1]}
-          </h2>
-          <p>{t.projectsBody}</p>
-        </div>
-
-        <div className="project-list">
-          {orderedProjects.map((project, index) => {
-            const displayNumber = String(index + 1).padStart(2, "0");
-            const text = projectText(project, lang);
-
-            return (
-            <article
-              className={`project-card tone-${project.tone}`}
-              id={`proyecto-${displayNumber}`}
-              key={project.title}
-              data-folder={`✦ ${lang === "en" ? "PROJECT" : "PROYECTO"} ${displayNumber}`}
-            >
-              <div className="project-heading">
-                <span className="project-number">{displayNumber}</span>
-                <div>
-                  <p className="project-eyebrow">{text.eyebrow}</p>
-                  <h3>{project.title}</h3>
-                  <p className="project-lead">{text.lead}</p>
-                  <p className="project-impact">{text.impact}</p>
-                  <div className="project-tags">
-                    {text.stack.slice(0, 3).map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
-                  </div>
-                  {project.liveUrl && (
-                    <a
-                      className="project-live-link"
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t.liveLink}
-                    </a>
-                  )}
-                </div>
-              </div>
-              <ProjectVisual project={project} />
-            </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="video-feature shell" id="videos-ia">
-        <div className="video-feature-card">
-          <div className="video-feature-content">
-            <span className="section-index">{t.videoIndex}</span>
-            <h2>
-              {t.videoH2Pre}
-              <span>{t.videoH2Span}</span>
-            </h2>
-            <p>{t.videoBody}</p>
-            <div className="video-feature-pills" aria-label={t.videoPillsAria}>
-              {t.videoPills.map((pill) => (
-                <span key={pill}>{pill}</span>
+    <>
+      <section className="hero">
+        <div className="glow hero-glow" aria-hidden="true" />
+        <div className="shell hero-grid">
+          <div className="hero-copy">
+            <div className="chips" aria-hidden="true">
+              {h.chips.map((c) => (
+                <span className="chip" key={c}>{c}</span>
               ))}
             </div>
-            <Link className="video-feature-btn" href="/servicios/videos">
-              {t.videoBtn}
-            </Link>
+            <h1>
+              {h.h1Pre}
+              <em>{h.h1Em}</em>
+            </h1>
+            <p className="lead">{h.lead}</p>
+            <div className="btns">
+              <WaButton>{t.common.whatsapp}</WaButton>
+              <ButtonLink href="/casos">{h.seeCases}</ButtonLink>
+            </div>
+            <dl className="meta">
+              {h.meta.map((m) => (
+                <div key={m.s}>
+                  <dt>{m.b}</dt>
+                  <dd>{m.s}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <div className="video-feature-visual" aria-hidden="true">
-            <div className="video-feature-badge">
-              <b>{t.videoBadgeB}</b>
-              <small>{t.videoBadgeSmall}</small>
-            </div>
-            <div className="video-feature-preview">
-              <span>{t.videoPreviewSpan}</span>
-              <p>{t.videoPreviewP}</p>
-            </div>
+          <div className="hero-visual" aria-hidden="true">
+            <Cubo pose="saludando" className="hero-cubo float-y" />
+            <span className="float f1">CRM</span>
+            <span className="float f2">{t.home.chips[1]}</span>
+            <span className="float f3">API</span>
+            <span className="float f4">ERP</span>
           </div>
         </div>
       </section>
 
-      <section id="capacidades" className="capabilities shell">
-        <span className="section-index">{t.capsIndex}</span>
-        <div className="capability-grid">
-          <h2>{t.capsH2}</h2>
-          <div className="capability-list">
-            {t.caps.map((cap) => (
-              <span key={cap}>{cap}</span>
+      <section className="sec">
+        <div className="shell">
+          <SectionHead index={h.servicesIndex} aside={h.servicesLead}>
+            {h.servicesH2[0]}
+            <br />
+            {h.servicesH2[1]}
+          </SectionHead>
+          <div className="svc">
+            {h.services.map((s, i) => (
+              <Link href={SERVICE_LINKS[i]} className="card svc-card" key={s.title}>
+                <ServiceIcon index={i} />
+                <h3>{s.title}</h3>
+                <p>{s.copy}</p>
+                <span className="more">{t.common.viewService}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="caps">
+            {h.caps.map((c) => (
+              <span className="chip plain" key={c}>{c}</span>
             ))}
           </div>
         </div>
       </section>
 
-      <SiteFooter />
-    </main>
+      <section className="sec tight">
+        <div className="shell">
+          <SectionHead index={h.casesIndex} aside={h.casesLead}>
+            {h.casesH2[0]}
+            <br />
+            {h.casesH2[1]}
+          </SectionHead>
+          <div className="grid3">
+            {featured.map((c) => (
+              <CaseCard study={c} key={c.slug} />
+            ))}
+          </div>
+          <div className="center">
+            <ButtonLink href="/casos">{h.casesAll}</ButtonLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec tight">
+        <div className="shell">
+          <div className="vid">
+            <div>
+              <div className="mono b">{h.videoIndex}</div>
+              <h2>
+                {h.videoH2Pre}
+                <em>{h.videoH2Em}</em>
+              </h2>
+              <CheckList items={h.videoPills} />
+              <ButtonLink href="/servicios/videos" variant="p">{h.videoBtn}</ButtonLink>
+            </div>
+            <div className="phones" aria-hidden="true">
+              {REELS.map((slug) => (
+                <div className="ph" key={slug}>
+                  <img src={`/videos/${slug}.jpg`} alt="" loading="lazy" decoding="async" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec tight">
+        <div className="shell">
+          <div className="head">
+            <div>
+              <div className="mono b">{h.processIndex}</div>
+              <h2>
+                {h.processH2[0]}
+                <br />
+                {h.processH2[1]}
+              </h2>
+            </div>
+            <div className="head-cubo" aria-hidden="true">
+              <Cubo pose="pensando" />
+            </div>
+          </div>
+          <div className="steps">
+            {h.steps.map((s) => (
+              <div className="card" key={s.n}>
+                <b>{s.n}</b>
+                <h3>{s.title}</h3>
+                <p>{s.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBand kicker={t.cta.homeKicker} pre={t.cta.homeH2Pre} em={t.cta.homeH2Em} label={t.common.whatsapp} />
+    </>
   );
 }
