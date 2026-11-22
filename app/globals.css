@@ -147,7 +147,7 @@ h3 { font: 700 26px / 1.15 var(--ui); letter-spacing: -0.03em; }
 .case-card:hover { transform: translateY(-4px); box-shadow: 0 30px 70px rgba(31, 79, 216, 0.16); }
 .case-link { display: block; }
 .case-body { padding: 22px 10px 0; }
-.case-body h3 { margin: 12px 0 10px; font-size: 28px; }
+.case-body h3 { margin: 0 0 10px; font-size: 28px; }
 .case-body p { font: 400 17px / 1.5 var(--ui); color: var(--texto); min-height: 78px; }
 .case-body .chips { margin: 18px 0 20px; }
 

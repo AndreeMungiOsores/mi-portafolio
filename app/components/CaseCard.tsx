@@ -14,7 +14,6 @@ export function CaseCard({ study }: { study: CaseStudy }) {
       <Link href={`/casos/${study.slug}`} className="case-link" aria-label={`${study.title}: ${t.common.viewCase}`}>
         <Shot src={coverOf(study)} />
         <div className="case-body">
-          <div className="mono b">{text.eyebrow}</div>
           <h3>{study.title}</h3>
           <p>{text.lead}</p>
           <div className="chips">
