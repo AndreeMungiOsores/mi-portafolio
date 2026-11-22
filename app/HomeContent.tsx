@@ -38,11 +38,6 @@ export function HomeContent() {
         <div className="glow hero-glow" aria-hidden="true" />
         <div className="shell hero-grid">
           <div className="hero-copy">
-            <div className="chips" aria-hidden="true">
-              {h.chips.map((c) => (
-                <span className="chip" key={c}>{c}</span>
-              ))}
-            </div>
             <h1>
               {h.h1Pre}
               <em>{h.h1Em}</em>

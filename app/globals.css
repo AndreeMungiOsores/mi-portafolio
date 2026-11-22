@@ -110,7 +110,7 @@ h3 { font: 700 26px / 1.15 var(--ui); letter-spacing: -0.03em; }
 .hero { padding: 70px 0 40px; position: relative; overflow-x: clip; }
 .hero-glow { right: -60px; top: 20px; width: 900px; height: 760px; }
 .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; min-height: 640px; }
-.hero-copy h1 { margin: 22px 0 26px; }
+.hero-copy h1 { margin: 0 0 26px; }
 .btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
 .meta { display: flex; flex-wrap: wrap; gap: 14px 38px; margin-top: 54px; padding-top: 28px; border-top: 1px solid var(--borde); }
 .meta dt { font: 700 36px var(--ui); letter-spacing: -0.04em; }
