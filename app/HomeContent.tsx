@@ -83,11 +83,6 @@ export function HomeContent() {
               </Link>
             ))}
           </div>
-          <div className="caps">
-            {h.caps.map((c) => (
-              <span className="chip plain" key={c}>{c}</span>
-            ))}
-          </div>
         </div>
       </section>
 
