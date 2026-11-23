@@ -1,7 +1,7 @@
 import { WHATSAPP_NUMBER } from "../copy";
 import { Cubo, WaButton, type Pose } from "./ui";
 
-/** Banda de llamado a la acción en cobalto sólido (patrón de los flyers de la marca). */
+/** Banda de llamado a la acción: escenario claro con el Cubo sobre órbitas (sin recuadro propio). */
 export function CtaBand({
   kicker,
   pre,
@@ -25,11 +25,18 @@ export function CtaBand({
             <em>{em}</em>
           </h2>
           <div className="cta-actions">
-            <WaButton variant="w">{label}</WaButton>
+            <WaButton>{label}</WaButton>
             <span className="cta-number">{WHATSAPP_NUMBER}</span>
           </div>
         </div>
         <div className="stage" aria-hidden="true">
+          <span className="glow-c" />
+          <span className="ring r1" />
+          <span className="ring r2" />
+          <span className="ring r3" />
+          <span className="dot d1" />
+          <span className="dot d2" />
+          <span className="dot d3" />
           <Cubo pose={pose} />
         </div>
       </div>
